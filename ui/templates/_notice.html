@@ -1,0 +1,7 @@
+{# A no-dead-end notice (api.pickers): what has nothing, and one-click alternatives that do. #}
+{% macro notice_box(n) -%}
+<div class="notice dead" role="status">
+  <p>{{ n.message }}</p>
+  {% if n.alternatives %}<div class="alts">{% for a in n.alternatives %}<a class="alt" href="{{ a.href }}">{{ a.label }}</a>{% endfor %}</div>{% endif %}
+</div>
+{%- endmacro %}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% from "_notice.html" import notice_box %}
+{% block title %}{% if provider %}EIN {{ provider.ein }} · {% endif %}Prices By Provider · Price Transparency Explorer{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/doors.css?v={{ static_version("doors.css") }}">
+<script src="/static/doors.js?v={{ static_version("doors.js") }}" defer></script>
+{% endblock %}
+{% block content %}
+{# One provider's prices (#40): its names and NPIs, Search in, narrow to a procedure, then its codes, each priced
+   only within that code: its median against everyone's in the same like-for-like group. #}
+{% set door_title, door_action, door_api, door_kind = "Prices By Provider", "/by-provider", "/api/providers?sort=rates&dir=desc", "providers" %}
+{% set door_placeholder, door_value, door_compact, door_list = "Another provider: name, NPI or EIN", "", True, None %}
+{% include "_door.html" %}
+{% if no_data %}
+  <div class="notice" role="alert">No data loaded yet. Load an index on the <a href="/">Load Data</a> page first.</div>
+{% elif not provider %}
+  <div class="phead"><h1>EIN {{ ein }}</h1></div>
+  {% if search_in and notice.kind != "unknown" %}{% include "_search_in.html" %}{% endif %}
+  {{ notice_box(notice) }}
+{% else %}
+  {% set p = provider %}
+  {% set top = p.names[:3] | map(attribute="name") | select | list %}
+  <div class="phead">
+    <h1>EIN {{ p.ein }}</h1>
+    <p>{{ p.names | length }} provider name{{ "" if p.names | length == 1 else "s" }} bill{{ "s" if p.names | length == 1 }} under this tax ID{% if name %}; showing the codes billed under <strong>{{ name }}</strong> (<a href="{{ url(name=None, codes_offset=None) }}">every code</a>){% endif %}.
+      {% if p.names | length > 1 %}Largest: {{ top | join("; ") }}.{% endif %}
+      {{ "{:,}".format(p.rate_count) }} rates for {{ "{:,}".format(p.code_count) }} code{{ "" if p.code_count == 1 else "s" }}, from {{ "{:,}".format(p.npis | length) }} NPI{{ "" if p.npis | length == 1 else "s" }}.</p>
+  </div>
+  {% include "_search_in.html" %}
+
+  <div class="narrow">
+    <label class="lbl" for="narrow-code">Narrow to one procedure <span class="muted">(only the {{ "{:,}".format(p.code_count) }} code{{ "" if p.code_count == 1 else "s" }} this provider has rates for here are offered)</span></label>
+    <span class="combo picker"><input id="narrow-code" type="search" placeholder="Billing code or procedure name"
+      autocomplete="off" spellcheck="false" data-picker="{{ picker_api }}" data-kind="code"></span>
+    <div class="notice-slot" aria-live="polite"></div>
+  </div>
+
+  <div class="sech" id="codes"><h2>Prices By Code</h2>
+    <span class="small muted">Each code within its most common like-for-like group, each provider’s price counted once: this provider’s median against everyone’s there.</span></div>
+  <table class="list" id="codes-table">
+    <thead><tr><th>Code</th><th>Procedure</th><th class="num">Rates</th><th>Most Common Group</th>
+      <th class="num">This Provider</th><th class="num">Everyone</th><th class="num">Difference</th><th>Prices By Name</th></tr></thead>
+    <tbody>
+      {% for c in p.codes %}
+      <tr data-href="{{ c.here_href }}">
+        <td class="code"><a href="{{ c.here_href }}" title="{{ c.billing_code }} at this provider">{{ c.billing_code }}</a>{% if c.billing_code_type == "RC" %} <span class="badge hosp">RC</span>{% endif %}<br><a class="all" href="{{ c.all_href }}">all providers</a></td>
+        <td class="proc">{{ c.name }}</td>
+        <td class="num">{{ "{:,}".format(c.rate_count) }}</td>
+        <td class="small grp"><div>{{ c.group_label }}{% if c.group_count > 1 %}<br><span class="muted">1 of its {{ c.group_count }} groups</span>{% endif %}</div></td>
+        <td class="num"><strong>{{ c.median | money }}</strong></td>
+        <td class="num">{{ c.everyone_median | money }}{% if c.mostly_this %}<br><span class="badge" title="This provider holds {{ (c.share * 100) | round | int }}% of the group’s {{ "{:,}".format(c.everyone_count) }} provider prices">mostly this provider</span>{% endif %}</td>
+        <td class="num{% if c.difference is not none and c.difference > 0.05 %} diff-up{% elif c.difference is not none and c.difference < -0.05 %} diff-dn{% else %} muted{% endif %}">{% if c.difference is none %}—{% elif c.difference | abs < 0.005 %}same{% else %}{{ "+" if c.difference > 0 else "−" }}{{ "%.0f" | format((c.difference * 100) | abs) }}%{% endif %}</td>
+        {% set name_total = c.breakdown_name_count %}
+        <td class="byname"><details class="breakdown"><summary>{{ c.groups | length }} group{{ "" if c.groups | length == 1 else "s" }} · {{ name_total }} name{{ "" if name_total == 1 else "s" }}</summary></details></td>
+      </tr>
+      {# The breakdown gets the table's whole width: shown (CSS :has) while the summary above is open. #}
+      <tr class="names-row"><td colspan="8">
+        <table class="names-in-group">
+          <thead><tr><th>Group</th><th>Name</th><th class="num">Median</th><th class="num">Rates</th></tr></thead>
+          {% for g in c.groups %}
+          <tbody class="group">
+          {% for n in g.names %}<tr{% if name and n.name == name %} class="picked"{% endif %}><td class="small muted">{% if loop.first %}{{ g.billed_as }}{% if g.procedure %} · procedure {{ g.procedure }}{% endif %} · <span title="{{ g.modifier_tooltip }}">{{ g.modifier_label }}</span> · <span title="{{ g.place_tooltip }}">{{ g.place_label }}</span> · {{ "{:,}".format(g.rate_count) }} rate{{ "" if g.rate_count == 1 else "s" }}{% endif %}</td><td>{{ n.name if n.name is not none else "(no name)" }}</td><td class="num">{{ n.median | money }}</td><td class="num muted">{{ "{:,}".format(n.rate_count) }}</td></tr>
+          {% endfor %}
+          {% if g.more_names %}<tr><td></td><td class="muted" colspan="3">and {{ g.more_names }} more</td></tr>{% endif %}
+          </tbody>
+          {% endfor %}
+        </table>
+      </td></tr>
+      {% else %}
+      <tr><td colspan="8" class="muted">No codes on this page: there {{ "is" if p.code_count == 1 else "are" }} {{ "{:,}".format(p.code_count) }}. <a href="{{ url(codes_offset=None) }}#codes">Back to the first page</a></td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% set shown_to = [codes_offset + limit, p.code_count] | min %}
+  {% if codes_offset > 0 or shown_to < p.code_count %}
+  <nav class="pager" aria-label="Pages of codes">
+    <span>{% if codes_offset > 0 and codes_offset < p.code_count %}<a href="{{ url(codes_offset=[codes_offset - limit, 0] | max or None) }}#codes">← Previous {{ limit }}</a>{% endif %}</span>
+    <span>{% if codes_offset < p.code_count %}{{ "{:,}".format(codes_offset + 1) }}–{{ "{:,}".format(shown_to) }} of {{ "{:,}".format(p.code_count) }} codes{% endif %}</span>
+    <span>{% if shown_to < p.code_count %}<a href="{{ url(codes_offset=shown_to) }}#codes">Next {{ [limit, p.code_count - shown_to] | min }} →</a>{% endif %}</span>
+  </nav>
+  {% endif %}
+
+  <div class="sech" id="names"><h2>Names</h2><span class="small muted">Each name this EIN bills under, with its rates; pick one to see only its codes.</span></div>
+  <ul class="names">
+    {% for n in p.names %}<li{% if n.name == name %} class="hit"{% endif %}>{% if n.name is none %}<span>(no name)</span>{% else %}<a href="{{ url(name=n.name, codes_offset=None) }}#codes">{{ n.name }}</a>{% endif %}<span class="muted">{{ "{:,}".format(n.rate_count) }}</span></li>{% endfor %}
+  </ul>
+
+  <div class="sech" id="npis"><h2>NPIs</h2><span class="small muted">The clinicians and facilities this EIN is paid for, and the names each is listed under.</span></div>
+  <table class="list" id="npis-table">
+    <thead><tr><th>NPI</th><th>Names</th><th class="num">Rates</th></tr></thead>
+    <tbody>
+      {% for n in p.npis[npis_offset:npis_offset + limit] %}
+      <tr><td class="code">{{ n.npi if n.npi is not none else "(none listed)" }}</td><td>{{ n.names | join("; ") }}</td><td class="num">{{ "{:,}".format(n.rate_count) }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% set npis_to = [npis_offset + limit, p.npis | length] | min %}
+  {% if npis_offset > 0 or npis_to < p.npis | length %}
+  <nav class="pager" aria-label="Pages of NPIs">
+    <span>{% if npis_offset > 0 %}<a href="{{ url(npis_offset=[npis_offset - limit, 0] | max or None) }}#npis">← Previous {{ limit }}</a>{% endif %}</span>
+    <span>{{ "{:,}".format(npis_offset + 1) }}–{{ "{:,}".format(npis_to) }} of {{ "{:,}".format(p.npis | length) }} NPIs</span>
+    <span>{% if npis_to < p.npis | length %}<a href="{{ url(npis_offset=npis_to) }}#npis">Next {{ [limit, p.npis | length - npis_to] | min }} →</a>{% endif %}</span>
+  </nav>
+  {% endif %}
+{% endif %}
+{% endblock %}

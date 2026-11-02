@@ -1,0 +1,15 @@
+{# Narrow to a provider (#40): the picker offers only providers with rates for this code in this Search in; typing
+   an NPI, EIN or name that has none says so at once, with alternatives (api.pickers). #}
+<div class="narrow">
+  {% if narrowed %}
+  <p class="narrowed"><span class="lbl">Narrowed to</span> <strong>{{ narrowed.label }}</strong>
+    {%- if narrowed.names %} · {{ narrowed.names[0][0] }}{% if narrowed.names | length > 1 %} <span class="muted">and {{ narrowed.names | length - 1 }} more name{{ "" if narrowed.names | length == 2 else "s" }}</span>{% endif %}{% endif %}
+    · <a href="{{ narrowed.clear_url }}">All providers for {{ result.billing_code }}</a>
+    {%- if narrowed.provider_url %} · <a href="{{ narrowed.provider_url }}">All codes at this provider</a>{% endif %}</p>
+  {% endif %}
+  <label class="lbl" for="narrow-provider">{{ "Narrow to another provider" if narrowed else "Narrow to one provider" }}
+    <span class="muted">(only providers with {{ result.billing_code }} rates here are offered)</span></label>
+  <span class="combo picker"><input id="narrow-provider" type="search" placeholder="Provider name, NPI or EIN"
+    autocomplete="off" spellcheck="false" data-picker="{{ picker_api }}" data-kind="provider"></span>
+  <div class="notice-slot" aria-live="polite"></div>
+</div>

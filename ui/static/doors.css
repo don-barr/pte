@@ -1,0 +1,135 @@
+/* The two doors (#40): the door's search box, the lists it filters, Search in, the narrow-to pickers and the
+   no-dead-end notices. Desktop only. Colors build on base.html's variables; --hosp tells hospital rates apart. */
+:root { --hosp: #5e4a86; --hosp-soft: #e7e1f1; --soft: #eef1f4; --shadow-2: 0 10px 30px rgba(15, 25, 40, .14); }
+@media (prefers-color-scheme: dark) {
+  :root { --hosp: #b9a6e0; --hosp-soft: #2f2840; --soft: #26262b; --shadow-2: 0 10px 30px rgba(0, 0, 0, .5); }
+}
+main { max-width: 1280px; min-width: 1000px; }
+
+.door { display: flex; align-items: center; gap: 24px; margin: 18px 0 14px; }
+.door h1 { font-size: 1.6rem; margin: 0; white-space: nowrap; min-width: 15rem; }
+.door form { flex: 1; max-width: 40rem; margin: 0; }
+.door .combo { position: relative; display: block; }
+.door input[type=search] { width: 100%; font: inherit; font-size: 1.05rem; padding: 10px 14px; border: 1px solid var(--border);
+                           border-radius: 8px; background: var(--surface); color: var(--text); }
+.door input[type=search]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft, #e5edf9); }
+.door.compact { margin: 12px 0 0; }
+.door.compact h1 { font-size: 1rem; font-weight: 500; color: var(--muted); min-width: 0; }
+.door.compact input[type=search] { font-size: .95rem; padding: 7px 12px; }
+
+/* Suggestions (doors.js): one per line, code bold, count on the right. */
+ul.suggest { position: absolute; z-index: 30; top: calc(100% + 4px); left: 0; right: 0; max-height: 26rem; overflow: auto;
+             margin: 0; padding: 6px 0; list-style: none; background: var(--surface); border: 1px solid var(--border);
+             border-radius: 8px; box-shadow: var(--shadow-2); font-size: .9rem; color: var(--text); }
+ul.suggest li { display: flex; gap: 12px; align-items: baseline; padding: 6px 14px; cursor: pointer; }
+ul.suggest li.sec { font-size: .78rem; color: var(--muted); cursor: default; padding-top: 2px; }
+ul.suggest li[role=option]:hover, ul.suggest li[aria-selected="true"] { background: var(--accent-soft, #e5edf9); }
+ul.suggest .v { font-weight: 650; min-width: 4.5rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+ul.suggest .d { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+ul.suggest .l { color: var(--muted); font-size: .82rem; white-space: nowrap; }
+
+/* The lists (empty pages). */
+.listing { margin-top: 8px; }
+.listcount { margin: 0 0 8px; font-size: .9rem; }
+table.list { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+             font-size: .9rem; }
+table.list th { text-align: left; font-weight: 600; font-size: .8rem; color: var(--muted); padding: 8px 12px; border-bottom: 1px solid var(--border); }
+table.list td { padding: 7px 12px; border-bottom: 1px solid var(--border); }
+table.list tbody tr[data-href] { cursor: pointer; }
+table.list tbody tr[data-href]:hover { background: var(--accent-soft, #e5edf9); }
+table.list .num, table.list th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.list td.code { font-weight: 650; white-space: nowrap; font-variant-numeric: tabular-nums; }
+table.list td.code a { color: inherit; text-decoration: none; }
+table.list td a { text-decoration: none; }
+.more { font-size: .85rem; margin: 8px 0 0; }
+.badge { display: inline-block; font-size: .75rem; padding: 1px 8px; border-radius: 999px; background: var(--soft); color: var(--muted);
+         white-space: nowrap; font-weight: 400; }
+.badge.hosp { background: var(--hosp-soft); color: var(--hosp); }
+.badge.cmp-up { color: #8a3b12; } .badge.cmp-dn { color: #1e6b3a; }
+
+/* Search in (#43): All networks or one network, side by side; Find your plan; the scope in words. */
+form.search-in { display: flex; flex-direction: column; gap: 8px; margin: 10px 0 0; padding: 10px 0;
+                 border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+form.search-in .si-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+form.search-in .si-row > .lbl { min-width: 6.5rem; }
+form.search-in .seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+form.search-in .seg-opt { position: relative; cursor: pointer; }
+form.search-in .seg-opt + .seg-opt { border-left: 1px solid var(--border); }
+form.search-in .seg-opt input { position: absolute; opacity: 0; pointer-events: none; }
+form.search-in .seg-opt span { display: block; padding: 5px 14px; font-size: .88rem; color: var(--muted); background: var(--surface);
+                               white-space: nowrap; }
+form.search-in .seg-opt span strong { color: var(--text); font-weight: 600; }
+form.search-in .seg-opt:hover span { background: var(--soft); }
+form.search-in .seg-opt input:checked + span { background: var(--accent); color: var(--accent-text); }
+form.search-in .seg-opt input:checked + span strong { color: var(--accent-text); }
+form.search-in .seg-opt input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: -3px; }
+form.search-in .find-plan { position: relative; display: block; width: 26rem; }
+form.search-in .find-plan input { width: 100%; font: inherit; font-size: .88rem; padding: 5px 10px; border: 1px solid var(--border);
+                                  border-radius: 6px; background: var(--surface); color: var(--text); }
+form.search-in .find-plan ul.suggest { right: auto; min-width: 100%; width: max-content; max-width: 48rem; }
+form.search-in .searching, form.search-in .plan-note { margin: 0; font-size: .9rem; color: var(--muted); }
+form.search-in .plan-note { color: var(--text); }
+form.search-in .searching strong { color: var(--text); }
+.lbl { font-size: .82rem; color: var(--muted); }
+
+/* Narrow to a provider / a procedure. */
+.narrow { margin: 12px 0 6px; max-width: 40rem; }
+.narrow > .lbl { display: block; margin-bottom: 4px; color: var(--text); font-weight: 600; font-size: .88rem; }
+.narrow > .lbl .muted { font-weight: 400; color: var(--muted); }
+.narrow .combo { position: relative; display: block; }
+.narrow input[type=search] { width: 100%; font: inherit; font-size: .92rem; padding: 7px 12px; border: 1px solid var(--border);
+                             border-radius: 6px; background: var(--surface); color: var(--text); }
+.narrowed { margin: 0 0 8px; font-size: .92rem; }
+
+/* No dead ends: what has nothing, and alternatives that do. */
+.notice.dead { margin: 8px 0; }
+.notice.dead p { margin: 0; }
+.notice.dead .alts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.notice.dead a.alt { display: inline-block; border: 1px solid var(--warn-border); background: var(--surface); border-radius: 999px;
+                     padding: 2px 10px; font-size: .85rem; color: var(--text); text-decoration: none; }
+.notice.dead a.alt:hover { border-color: var(--accent); }
+
+/* Hospital rates: their own section. */
+.sech { display: flex; align-items: baseline; gap: 14px; margin: 26px 0 6px; }
+.sech h2 { margin: 0; white-space: nowrap; flex: none; }
+.sech .btn { margin-left: auto; text-decoration: none; }
+.intro { max-width: 60rem; margin: 0 0 10px; }
+
+/* Provider page. */
+.phead { margin: 14px 0 6px; }
+.phead h1 { margin: 0 0 4px; font-size: 1.5rem; }
+.phead p { margin: 0; color: var(--muted); max-width: 64rem; }
+ul.names { columns: 3; column-gap: 28px; font-size: .88rem; margin: 6px 0 0; padding: 0; list-style: none; }
+ul.names li { break-inside: avoid; padding: 2px 0; display: flex; justify-content: space-between; gap: 8px; }
+ul.names li.hit { font-weight: 650; color: var(--accent); }
+.diff-up { color: #8a3b12; } .diff-dn { color: #1e6b3a; }
+@media (prefers-color-scheme: dark) { .diff-up { color: #f0a070; } .diff-dn { color: #7fd09a; } }
+/* Prices By Code: words never break mid-word; the procedure and group columns get room for a line or two. */
+#codes.sech { flex-direction: column; align-items: flex-start; gap: 2px; }
+#codes-table th, #codes-table td { padding-left: 9px; padding-right: 9px; }
+#codes-table td { overflow-wrap: normal; }
+#codes-table td.proc { min-width: 7rem; }
+#codes-table td.grp { min-width: 13.5rem; line-height: 1.35; }
+#codes-table td.grp > div { max-width: 20rem; }  /* caps the column so wide pages give the room to Procedure */
+#codes-table td.byname { min-width: 10.5rem; }
+#codes-table td.code a.all { color: var(--accent); font-weight: 400; font-size: .78rem; }
+details.breakdown summary { cursor: pointer; color: var(--accent); white-space: nowrap; font-size: .85rem; }
+/* Each code's breakdown is a full-width row under it, shown while its summary is open. */
+#codes-table tr.names-row { display: none; }
+#codes-table tr:has(details.breakdown[open]) > td { border-bottom-color: transparent; }
+#codes-table tr:has(details.breakdown[open]) + tr.names-row { display: table-row; }
+#codes-table tr.names-row > td { padding: 0 12px 12px; background: var(--surface); }
+table.names-in-group { width: 100%; border-collapse: collapse; font-size: .84rem; background: var(--soft); border-radius: 6px; }
+table.names-in-group th { font-size: .75rem; padding: 6px 12px 4px; border-bottom: 1px solid var(--border); }
+table.names-in-group td { padding: 3px 12px; border: 0; vertical-align: top; }
+table.names-in-group td:first-child { width: 45%; }
+table.names-in-group tbody.group + tbody.group tr:first-child td { border-top: 1px solid var(--border); padding-top: 5px; }
+table.names-in-group tbody.group:last-child tr:last-child td { padding-bottom: 6px; }
+table.names-in-group tr.picked td { font-weight: 650; }
+.pager { display: flex; justify-content: space-between; margin-top: 10px; font-size: .88rem; color: var(--muted); }
+.small { font-size: .82rem; }
+.muted { color: var(--muted); }
+/* A picker's options sit in the flow, so a notice under them stays readable. */
+.narrow ul.suggest { position: static; margin-top: 4px; box-shadow: none; }
+.notice { padding: 12px 14px; border-radius: 6px; border: 1px solid var(--warn-border); background: var(--warn-bg); margin: 12px 0; }
+.notice.error { border-color: var(--err-border); background: var(--err-bg); }

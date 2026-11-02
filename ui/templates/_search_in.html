@@ -1,0 +1,24 @@
+{# Search in (#39, #40, #43): All networks or one in-network file, side by side, plus "Find your plan", which only
+   ever picks that plan's file and says so; the page says in words what is searched. Changing it keeps everything else
+   on the page except the paging. #}
+<form class="search-in" method="get" action="{{ search_in_action }}">
+  {% for name, value in search_in_keep %}<input type="hidden" name="{{ name }}" value="{{ value }}">{% endfor %}
+  <div class="si-row">
+    <span class="lbl" id="search-in-label">Search in</span>
+    <div class="seg" role="radiogroup" aria-labelledby="search-in-label">
+      {% for c in search_in_choices %}
+      <label class="seg-opt"><input type="radio" name="in" value="{{ c.value }}"{% if c.value == search_in.selected %} checked{% endif %} data-autosubmit>
+        <span><strong>{{ c.name }}</strong> · {{ c.detail }}</span></label>
+      {% endfor %}
+    </div>
+    <noscript><button class="btn sm" type="submit">Apply</button></noscript>
+  </div>
+  <div class="si-row">
+    <label class="lbl" for="find-plan">Find your plan</label>
+    <span class="combo find-plan"><input type="search" id="find-plan" placeholder="Plan name or plan ID, e.g. Bronze or 25303NY011"
+      autocomplete="off" data-plans="/api/plans" data-kind="plan"></span>
+  </div>
+  <p class="searching"><strong>Searching:</strong> {{ search_in.statement }}</p>
+  {% if search_in.plan_note %}<p class="plan-note">{{ search_in.plan_note }}</p>{% endif %}
+</form>
+{% if search_in.error %}<div class="notice" role="alert">{{ search_in.error }}</div>{% endif %}

@@ -1,0 +1,12 @@
+{# A door's one search box (#40): on the empty page it filters the list beneath it as you type (data-list); on a
+   result page it suggests as you type. Set door_title, door_action, door_api, door_kind, door_placeholder,
+   door_value, door_compact and door_list before including. #}
+<div class="door{% if door_compact %} compact{% endif %}">
+  <h1>{{ door_title }}</h1>
+  <form class="door-form" method="get" action="{{ door_action }}" role="search">
+    <span class="combo"><input type="search" name="q" value="{{ door_value }}" placeholder="{{ door_placeholder }}"
+      aria-label="{{ door_placeholder }}" autocomplete="off" spellcheck="false" data-door="{{ door_api }}"
+      data-kind="{{ door_kind }}"{% if door_list %} data-list="{{ door_list }}"{% endif %}{% if not door_compact %} autofocus{% endif %}></span>
+    <noscript><button class="btn" type="submit">Find</button></noscript>
+  </form>
+</div>

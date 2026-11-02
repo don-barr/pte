@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% from "_notice.html" import notice_box %}
+{% block title %}{% if query %}{{ query | trim | upper }} · {% endif %}Prices By Procedure · Price Transparency Explorer{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/search.css?v={{ static_version("search.css") }}">
+<link rel="stylesheet" href="/static/doors.css?v={{ static_version("doors.css") }}">
+<script src="/static/search.js?v={{ static_version("search.js") }}" defer></script>
+<script src="/static/doors.js?v={{ static_version("doors.js") }}" defer></script>
+{% endblock %}
+{% block content %}
+{# One procedure's prices (#40): the code, Search in, narrow to a provider, then the groups, statistics and rates. #}
+{% set door_title, door_action, door_api, door_kind = "Prices By Procedure", "/by-procedure", "/api/procedures", "procedure" %}
+{% set door_placeholder, door_compact, door_list = "Another code or procedure name", True, None %}
+{% set door_value = "" %}
+{% include "_door.html" %}
+<div class="search-page">
+{% if error %}
+  <div class="notice error" role="alert">{{ error }} <a href="/by-procedure">Find a procedure</a></div>
+{% elif no_data %}
+  <div class="notice" role="alert">No data loaded yet. Load an index on the <a href="/">Load Data</a> page first.</div>
+{% elif result is not none %}
+  {% if result.total == 0 and code_missing is not defined and not result.filters %}
+    {% set code_missing = true %}
+  {% endif %}
+  {% if code_missing %}
+    <div class="notice">No rates for {{ result.billing_code }} {% if search_in.file_ids %}in {{ search_in.statement }}{% else %}in the active index{% endif %}.
+      {% if search_in.file_ids %}<a href="{{ path }}">Search all networks</a> or{% endif %} <a href="/by-procedure?q={{ result.billing_code | urlencode }}">find a procedure</a>.</div>
+    {% set search_in_action, search_in_keep = path, [] %}
+    {% include "_search_in.html" %}
+  {% else %}
+    {% include "_results_header.html" %}
+    {% set search_in_action, search_in_keep = path, url.pairs(offset=None) | rejectattr(0, "equalto", "in") | list %}
+    {% include "_search_in.html" %}
+    {% include "_narrow_provider.html" %}
+    {% if notice %}
+    {{ notice_box(notice) }}
+    {% elif result.total == 0 and identity_miss %}
+    <div class="notice">No rates for {{ result.billing_code }} from {{ identity_miss }}. <a href="{{ narrowed.clear_url }}">See every rate for {{ result.billing_code }}</a></div>
+    {% else %}
+    {% include "_scope_bar.html" %}
+    {% if result.total == 0 %}
+    <div class="card emptystate"><p>No rates match these filters.</p><a href="{{ clear_url }}">Clear all</a></div>
+    {% else %}
+    <nav class="tabs" role="tablist" aria-label="Views">
+      {% for key, label, n in tabs %}
+      <a role="tab" aria-selected="{{ "true" if key == view else "false" }}" href="{{ tab_url(key) }}">{{ label }}{% if n is not none %}<span class="count">{{ "{:,}".format(n) }}</span>{% endif %}</a>
+      {% endfor %}
+    </nav>
+    {% include "_tab_" ~ view ~ ".html" %}
+    {% endif %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+</div>
+{% endblock %}

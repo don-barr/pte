@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% from "_table_macros.html" import sort_th %}
+{% block title %}Prices By Provider · Price Transparency Explorer{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/doors.css?v={{ static_version("doors.css") }}">
+<script src="/static/doors.js?v={{ static_version("doors.js") }}" defer></script>
+{% endblock %}
+{% block content %}
+{# Prices By Provider, empty (#40): one box over every provider; a name, EIN or NPI filters the list. #}
+{% set door_title, door_action, door_api, door_kind = "Prices By Provider", "/by-provider", "/api/providers?sort=rates&dir=desc", "providers" %}
+{% set door_placeholder, door_value, door_compact, door_list = "Provider name, NPI or EIN, e.g. Mount Sinai or 11-3322995", q, False, "door-list" %}
+{% include "_door.html" %}
+{% if no_data %}
+<div class="notice" role="alert">No data loaded yet. Load an index on the <a href="/">Load Data</a> page first.</div>
+{% else %}
+<section class="listing" aria-label="Providers">
+  {% set tail = "An EIN (who gets paid) often bills under several names; each is priced on its own." %}
+  {% set noun = "provider (EIN)" if all == 1 else "providers (EINs)" %}
+  <p class="muted listcount" data-count data-all="{{ all }}" data-noun="{{ noun }}" data-order="{{ order }}" data-tail="{{ tail }}">{% if q %}{{ "{:,}".format(total) }} of {{ "{:,}".format(all) }} {{ noun }} match “{{ q }}”{% else %}All {{ "{:,}".format(all) }} {{ noun }}{% endif %}, {{ order }}. {{ tail }}</p>
+  {# Every header sorts the whole list (most rates first unless asked); the script re-sorts in place. #}
+  {% set keep, path = [("q", q)] if q else [], "/by-provider" %}
+  <table class="list" id="door-list" data-sort="{{ sort }}" data-dir="{{ direction }}">
+    <thead><tr>{{ sort_th("name", "Provider Names", sort, direction, keep, path) }}{{ sort_th("ein", "EIN", sort, direction, keep, path) }}
+      {{- sort_th("npis", "NPIs", sort, direction, keep, path, cls="num", first="desc") }}{{ sort_th("codes", "Codes", sort, direction, keep, path, cls="num", first="desc") }}
+      {{- sort_th("rates", "Rates", sort, direction, keep, path, cls="num", first="desc") }}</tr></thead>
+    <tbody>
+      {% for p in providers %}
+      {% set shown = p.matched_names[:3] %}
+      <tr data-href="{{ p.href }}"><td><a href="{{ p.href }}">{{ shown | join("; ") }}{% if p.name_count > shown | length %} +{{ p.name_count - shown | length }} more{% endif %}</a></td>
+        <td class="code">{{ p.ein }}</td><td class="num">{{ "{:,}".format(p.npi_count) }}</td>
+        <td class="num">{{ "{:,}".format(p.code_count) }}</td><td class="num">{{ "{:,}".format(p.rate_count) }}</td></tr>
+      {% else %}
+      <tr><td colspan="5" class="muted">No provider name, EIN or NPI matches “{{ q }}”.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="muted more" data-more{% if total <= providers | length %} hidden{% endif %}>The first {{ providers | length }} of {{ "{:,}".format(total) }}; keep typing to narrow.</p>
+</section>
+{% endif %}
+{% endblock %}

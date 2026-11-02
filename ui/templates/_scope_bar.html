@@ -1,0 +1,33 @@
+{# The one home for what narrows the numbers: the group, Count by (#24), and every other filter as a chip. #}
+<section class="scopebar" aria-label="What these numbers cover">
+  <div class="scope-item"><span class="lbl">Group</span>
+    {% if groups | length < 2 %}
+    <span class="picker-btn one" title="Every rate here is in one group">{{ groups[0].label if groups else "—" }}</span>
+    {% else %}
+    <details class="pop picker">
+      <summary class="picker-btn">{% if current_group %}{{ current_group.label }} <span class="sub">· {{ "{:,}".format(current_group.count) }} {{ units[0] if current_group.count == 1 else units[1] }}</span>{% elif groups | length == 1 %}{{ groups[0].label }}{% else %}All {{ groups | length }} groups{% endif %}</summary>
+      <div class="popover wide">
+        {% if groups | length > 8 %}<input type="search" class="group-filter" placeholder="Filter groups: 25, office, RC 0510…" aria-label="Filter groups">{% endif %}
+        <div class="group-list">
+          <a class="group-all{% if not current_group %} on{% endif %}" href="{{ all_groups_url }}"><span>All {{ groups | length }} groups</span><span class="n">{{ "{:,}".format(groups | sum(attribute="count")) }}</span></a>
+          {% for g in groups %}
+          <a class="group-option{% if g.active %} on{% endif %}" href="{{ g.href }}" title="{{ g.title }}"><span>{{ g.label }}</span> <span class="n">{{ "{:,}".format(g.count) }} {{ units[0] if g.count == 1 else units[1] }} · {{ g.median | money }}</span></a>
+          {% endfor %}
+        </div>
+      </div>
+    </details>
+    {% endif %}
+    {% if current_group and groups | length > 1 %}<a class="linkbtn" href="{{ all_groups_url }}">All groups</a>{% endif %}
+  </div>
+  <div class="scope-item"><span class="lbl" title="What one value in the statistics and one line in Rates is: each provider’s price once (EIN + price), each clinician’s (NPI + price), or every row of the file">Count by</span>
+    <nav class="seg countby" aria-label="Count by">
+      {% for key, label in count_by_labels.items() %}<a href="{{ url(group_by=None if key == "provider" else key, offset=None) }}"{% if key == group_by %} aria-current="true"{% endif %}>{{ label }}</a>{% endfor %}
+    </nav>
+  </div>
+  {% if chips %}
+  <div class="chips">
+    {% for c in chips %}<span class="chip">{{ c.label }}<a href="{{ c.href }}" aria-label="Remove {{ c.label }}">✕</a></span>{% endfor %}
+    <a class="clear-all" href="{{ clear_url }}">Clear all</a>
+  </div>
+  {% endif %}
+</section>

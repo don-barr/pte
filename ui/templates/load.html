@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+{% block title %}Load Data · Price Transparency Explorer{% endblock %}
+{% block head %}
+{% if running %}<noscript><meta http-equiv="refresh" content="2"></noscript>{% endif %}
+<style>
+  .step { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; }
+  .step h2 { font-size: 1rem; margin: 0 0 8px; }
+  .step h3 { font-size: .95rem; margin: 16px 0 8px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .row input[type=text] { font: inherit; flex: 1 1 28rem; min-width: 0; padding: 8px 10px; border: 1px solid var(--border);
+                          border-radius: 6px; background: var(--bg); color: var(--text); }
+  button.primary { font: inherit; padding: 8px 18px; border: 0; border-radius: 6px; background: var(--accent);
+                   color: var(--accent-text); cursor: pointer; }
+  button.primary[disabled] { opacity: .6; cursor: progress; }
+  .hint { color: var(--muted); font-size: .85rem; margin: 6px 0 0; }
+  .notice { padding: 12px 14px; border-radius: 6px; border: 1px solid var(--warn-border); background: var(--warn-bg); margin-bottom: 16px; }
+  .notice.error { border-color: var(--err-border); background: var(--err-bg); }
+  label.file { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-top: 1px solid var(--border); cursor: pointer; }
+  label.file:first-of-type { border-top: 0; }
+  label.file input { margin-top: 4px; }
+  label.file strong { word-break: break-all; }
+  .muted { color: var(--muted); font-size: .85rem; }
+  .tag { display: inline-block; font-size: .75rem; padding: 0 6px; border-radius: 10px; border: 1px solid var(--border); margin-left: 4px; }
+  .tag.ok { border-color: #3a8a4a; color: #3a8a4a; }
+  .tag.bad { border-color: var(--err-border); color: #b03a3a; }
+  .modes label { display: block; padding: 4px 0; cursor: pointer; }
+  table.result { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  table.result th, table.result td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.result td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .table-wrap { overflow-x: auto; }
+  .valid { color: #3a8a4a; margin: 8px 0 0; }
+  .valid code { color: var(--muted); font-size: .85rem; word-break: break-all; }
+  .problems { margin: 6px 0 0; padding-left: 20px; font-size: .9rem; }
+  .problems code { word-break: break-word; }
+  .sources { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: .85rem; margin-top: 4px; }
+  .sources label { cursor: pointer; }
+  .sources label.off { color: var(--muted); cursor: not-allowed; }
+  /* Step 2 (#41.5): what Load will fetch, per file and in total */
+  p.fetch { margin: 2px 0 0; font-size: .85rem; color: var(--muted); }
+  p.fetch span[data-source="local"] { color: #3a8a4a; }
+  p.download-total { font-weight: 600; margin: 14px 0 0; }
+  /* Step 1 (#41.1): each index file on one tight line, the row a link that opens it; a loaded one's badge links to
+     its entry (#41.2) */
+  .indexes { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .index-item { padding: 8px 12px; border-top: 1px solid var(--border); }
+  .index-item:first-child { border-top: 0; }
+  .index-item:hover, .index-item:has(a[aria-current="true"]) { background: var(--row-alt); }
+  .index-item:has(a[aria-current="true"]) { box-shadow: inset 3px 0 0 var(--accent); }
+  a.index-row { color: var(--text); text-decoration: none; }
+  a.index-row > span { margin-right: 8px; }
+  a.index-row:hover .name { text-decoration: underline; }
+  a.index-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  a.index-row .name { word-break: break-all; font-weight: 600; }
+  a.index-row .ok { color: #3a8a4a; font-size: .9rem; }
+  a.index-row .bad { color: #b03a3a; font-size: .9rem; }
+  a.index-row .facts { color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
+  a.tag.loaded { margin-left: 0; border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  a.tag.loaded:hover { background: var(--accent); color: var(--accent-text); }
+  .upload { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+  .pick { position: relative; display: inline-block; padding: 7px 14px; border: 1px solid var(--border);
+          border-radius: 6px; background: var(--bg); color: var(--text); cursor: pointer; }
+  .pick:hover { border-color: var(--accent); }
+  .pick:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .pick input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; opacity: 0; }
+  .progress { list-style: none; padding: 0; margin: 8px 0 0; font-size: .9rem; }
+  .progress li { padding: 2px 0; }
+  /* A running load (#42.1, #42.2) */
+  .load-progress { border-color: var(--accent); }
+  .load-progress .load-facts { margin: 0 0 8px; font-variant-numeric: tabular-nums; }
+  ol.load-steps { margin: 0; padding-left: 20px; }
+  ol.load-steps > li { padding: 4px 0; }
+  ol.load-steps > li.later { color: var(--muted); }
+  .progress li[data-stage="waiting"] { color: var(--muted); }
+  .progress .stage { font-variant-numeric: tabular-nums; }
+  /* Step 2: each file's preview (#35) */
+  details.preview { margin: 6px 0 4px; font-size: .9rem; }
+  details.preview > summary { cursor: pointer; color: var(--accent); width: max-content; }
+  .file-preview { margin-top: 8px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); }
+  .file-preview dl.facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 2px 14px; margin: 0 0 10px; }
+  .file-preview dt { color: var(--muted); }
+  .file-preview dd { margin: 0; min-width: 0; }
+  .file-preview code { word-break: break-all; }
+  .file-preview .plan-summary { margin: 0; }
+  .file-preview .hint { margin: 2px 0 0; }
+  .file-preview .plans { max-height: 26rem; overflow-y: auto; margin-top: 8px; }
+  .file-preview table.result tr.group td { border-top: 2px solid var(--border); }
+  .file-preview table.result td { word-break: normal; }
+  .file-preview table.result td.nowrap { white-space: nowrap; }
+  @media (max-width: 640px) { .file-preview dl.facts { grid-template-columns: 1fr; } .file-preview dd { margin-bottom: 4px; } }
+  /* The active index, then the other loaded indexes (#37, #41.3): one database per index */
+  #indexes > h2, #load > h2 { font-size: 1.1rem; margin: 0 0 10px; }
+  #indexes > h2.others { margin-top: 20px; }
+  #load { margin-top: 28px; }
+  .index-db:target { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .index-db { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+  .index-db.active { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+  .db-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .db-head h3 { font-size: 1rem; margin: 0 0 2px; word-break: break-all; }
+  .db-head p { margin: 0; }
+  .db-head code { font-size: .8rem; }
+  .db-actions { display: flex; gap: 10px; align-items: center; flex: none; }
+  .db-actions form { margin: 0; }
+  button.plain { font: inherit; font-size: .85rem; padding: 4px 12px; border-radius: 6px; cursor: pointer;
+                 border: 1px solid var(--border); background: var(--surface); color: var(--text); }
+  button.plain:hover { border-color: var(--accent); }
+  button.danger { font: inherit; font-size: .85rem; padding: 4px 12px; border-radius: 6px; cursor: pointer;
+                  border: 1px solid #b03a3a; background: #b03a3a; color: #fff; }
+  a.remove { font-size: .85rem; color: #b03a3a; }
+  .tag.active { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .contains { margin: 10px 0 6px; font-weight: 600; font-size: .92rem; }
+  .confirm { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin: 10px 0 0; }
+  .confirm form { margin: 0; }
+  .index-db article.file { border-top: 1px solid var(--border); padding: 8px 0 4px; }
+  .index-db article.file .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .index-db article.file .mark { display: inline-block; width: 1.2em; font-weight: 700; }
+  .index-db article.file.loaded .mark { color: #3a8a4a; }
+  .index-db article.file.missing .mark { color: #b03a3a; }
+  .index-db article.file.missing { color: var(--muted); }
+  .index-db article.file .why { color: var(--text); }
+  .index-db article.file details.preview { margin-left: 1.2em; }
+</style>
+{% endblock %}
+{% block content %}
+<h1>Load Data</h1>
+<p class="lede">The two price pages (Prices By Procedure, Prices By Provider) show the active index, one loaded index at a time. Switch to another
+  loaded index, or load a new one below.</p>
+
+{% set source_labels = {"local": "local copy", "download": "downloaded and kept", "web": "from the web (not saved)"} %}
+{% for n in flashes %}<div class="notice" role="status">{{ n.text }}{% if n.href %} <a href="{{ n.href }}">{{ n.link }}</a>{% endif %}</div>{% endfor %}
+{% if running and not progress_here %}{% with job = running %}{% include "_load_progress.html" %}{% endwith %}{% endif %}
+
+{% if job and job.state == "done" %}
+<div class="step" role="status" data-job="done">
+  {% if result %}
+  <h2>Done in {{ "%.1f" | format(result.seconds) }} s · {% if result.replaced %}{{ "Rebuilt" if result.backup_path else "Built" }} {{ result.db }}{% else %}No file loaded{% endif %}</h2>
+  {% if result.replaced %}<p><strong>{{ result.db }}</strong> is now the active index: the price pages show its data.</p>{% endif %}
+  {% if result.backup_path %}<p>Backed up the previous {{ result.db }} to <code>{{ result.backup_path }}</code>.</p>{% endif %}
+  {% if not result.replaced %}<p>No file loaded, so nothing changed: no database was built or replaced.</p>{% endif %}
+  <div class="table-wrap">
+    <table class="result">
+      <thead><tr><th>File</th><th>Source</th><th class="num">Rates</th><th class="num">Plans</th><th>Error</th></tr></thead>
+      <tbody>
+      {% for f in result.files %}
+        <tr>
+          <td>{{ f.file }}</td>
+          <td>{{ source_labels[f.source] }}</td>
+          <td class="num">{{ "{:,}".format(f.rate_count) }}</td>
+          <td class="num">{{ f.plan_count }}</td>
+          <td>{{ f.error or "—" }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p><a href="/#indexes">See the loaded indexes</a> · <a href="/by-procedure">Prices By Procedure</a> · <a href="/by-provider">Prices By Provider</a></p>
+  {% else %}
+  <h2>The Load Didn’t Finish</h2>
+  <div class="notice error" role="alert" style="margin:0">{{ error }}</div>
+  {% endif %}
+</div>
+{% endif %}
+
+<section id="indexes" aria-label="Loaded indexes">
+  {% if index_notice %}<div class="notice{% if index_notice.error %} error{% endif %}" role="{{ "alert" if index_notice.error else "status" }}">{{ index_notice.text }}</div>{% endif %}
+  {% for e in indexes %}
+  {% set info = e.info %}
+  {% if loop.first and e.active %}
+  <h2 id="active-title">Active Index: {% if info %}{{ info.reporting_entity_name or info.file_name }}, {{ info.last_updated_on or "undated" }}{% else %}{{ e.name }}{% endif %}</h2>
+  {% elif loop.first %}
+  <h2>Loaded Indexes</h2>
+  {% elif loop.index == 2 and indexes[0].active %}
+  <h2 class="others">Other Loaded Indexes</h2>
+  {% endif %}
+  <section class="index-db{% if e.active %} active{% endif %}" data-db="{{ e.name }}" id="db-{{ e.name }}">
+    <div class="db-head">
+      <div>
+        {% set file_label = info.file_name if info else e.name %}
+        <h3>{% if e.index_path %}<a href="/?index={{ e.index_path | urlencode | replace('/', '%2F') }}" title="Open it in step 1">{{ file_label }}</a>{% else %}{{ file_label }} <span class="muted" style="font-weight:400">· index file not in your list</span>{% endif %}{% if e.active %} <span class="tag active">Active</span>{% endif %}</h3>
+        <p class="muted">
+          {% if info %}{{ info.reporting_entity_name or "Publisher not given" }}
+          · {% if info.valid %}<span class="tag ok">valid</span>{% else %}<span class="tag bad">not valid</span>{% endif %}
+          · index dated {{ info.last_updated_on or "—" }}
+          {% if info.loaded_at %}· loaded {{ info.loaded_at[:16] | replace("T", " ") }} UTC{% endif %}
+          {% else %}This database’s index wasn’t recorded (it was built before one database per index).{% endif %}
+          · <code>{{ e.name }}</code>
+        </p>
+      </div>
+      <div class="db-actions">
+        {% if not e.active %}
+        <form method="post" action="/indexes/show"><input type="hidden" name="name" value="{{ e.name }}"><button class="plain" type="submit" title="The price pages will show this index">Show this one</button></form>
+        {% endif %}
+        <a class="remove" href="/?remove={{ e.name | urlencode }}#indexes">Remove…</a>
+      </div>
+    </div>
+    {% if remove_ask == e.name %}
+    <div class="notice confirm" role="alert">
+      <span>Remove <strong>{{ e.name }}</strong>? It’s backed up to the backups folder first, then deleted.</span>
+      <form method="post" action="/indexes/remove">
+        <input type="hidden" name="name" value="{{ e.name }}"><input type="hidden" name="confirm" value="yes">
+        <button class="danger" type="submit">Remove</button>
+      </form>
+      <a href="/#indexes">Cancel</a>
+    </div>
+    {% endif %}
+    {% set n = e.listed_count %}
+    <p class="contains">{% if info %}Contains {{ e.loaded_count }} of the index’s {{ n }} in-network file{{ "" if n == 1 else "s" }}{% else %}{% set held = e.files | selectattr("loaded") | list | length %}Contains {{ held }} in-network file{{ "" if held == 1 else "s" }}{% endif %}</p>
+    {% for f in e.files %}
+    <article class="file{{ " loaded" if f.loaded else " missing" }}"{% if e.active and loop.first %} id="files"{% endif %}>
+      <div class="head">
+        <div>
+          {% if f.loaded %}
+          <span class="mark" aria-label="loaded">✓</span><strong title="{{ f.file }}">{{ f.short_name }}</strong>
+          <span class="muted">· <span>{{ f.row.plan_count }} plan{{ "" if f.row.plan_count == 1 else "s" }}</span>
+            · <span>{{ "{:,}".format(f.row.rate_count or 0) }} rate{{ "" if f.row.rate_count == 1 else "s" }}</span>
+            {% if f.row.loaded_at %}· loaded {{ f.row.loaded_at[:16] | replace("T", " ") }} UTC{% endif %}</span>
+          {% else %}
+          <span class="mark" aria-label="not loaded">✗</span><strong title="{{ f.file }}">{{ f.short_name }}</strong>
+          <span class="muted">· not in this database{% if f.row and f.row.error %}: its load failed: <span class="why">{{ f.row.error }}</span>{% endif %}</span>
+          {% endif %}
+          <div class="muted" style="font-size:.8rem; margin-left:1.2em; word-break:break-all">{{ f.file }}</div>
+        </div>
+      </div>
+      {% if f.row and f.row.warnings %}<p class="muted" style="margin: 4px 0 0 1.2em;"><strong>Warning:</strong> {{ f.row.warnings }}</p>{% endif %}
+      {% if f.loaded and f.preview %}
+      <details class="preview">
+        <summary>Preview</summary>
+        {% with p = f.preview %}{% include "_file_preview.html" %}{% endwith %}
+      </details>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </section>
+  {% else %}
+  <div class="notice"><strong>Nothing is loaded yet</strong>, so the price pages have nothing to show.
+    Choose an index file below and load its in-network files.</div>
+  {% endfor %}
+</section>
+
+<section id="load" aria-labelledby="load-title">
+<h2 id="load-title">Load An Index</h2>
+<div class="step">
+  <h2>1. Choose An Index File</h2>
+  {% if local_indexes %}
+  <div class="indexes" role="list" aria-label="Index files in data/raw/index_files/">
+    {% for i in local_indexes %}
+    <div class="index-item" role="listitem">
+      <a class="index-row" href="/?index={{ i.path | urlencode | replace('/', '%2F') }}"{% if i.path == location %} aria-current="true"{% endif %}>
+        <span class="name">{{ i.name }}</span>
+        {% if i.error %}<span class="bad">✗ {{ i.error }}</span>{% elif i.valid %}<span class="ok">✓ valid</span>{% else %}<span class="bad">✗ not a valid CMS index</span>{% endif %}
+        {% if not i.error %}<span class="facts">{{ i.file_count }} in-network file{{ "" if i.file_count == 1 else "s" }} · {{ i.plan_count }} plan{{ "" if i.plan_count == 1 else "s" }} · saved {{ i.modified[:16] | replace("T", " ") }} UTC</span>{% endif %}
+      </a>
+      {% if i.db %}<a class="tag loaded" href="#db-{{ i.db }}">{{ "Loaded · active" if i.db_active else "Loaded" }}</a>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted">No index files in <code>data/raw/index_files/</code> yet. Open one below and it joins this list.</p>
+  {% endif %}
+  {% if location and not index_error %}
+    {% if problems %}
+    <div class="notice error" role="alert" style="margin:12px 0 0">
+      {% if error %}<p style="margin:0 0 6px"><strong>{{ error }}</strong></p>{% endif %}
+      <strong>Not a valid CMS index</strong> ({{ problems | length }} problem{{ "" if problems | length == 1 else "s" }}), so its files can't be loaded:
+      <ul class="problems">
+        {% for p in problems[:20] %}<li><code>{{ p }}</code></li>{% endfor %}
+        {% if problems | length > 20 %}<li>and {{ problems | length - 20 }} more</li>{% endif %}
+      </ul>
+    </div>
+    {% else %}
+    <p class="valid">✓ Valid CMS index{% if index_path %} <code>{{ index_path }}</code>{% endif %}</p>
+    {% endif %}
+  {% endif %}
+
+  <h3>Open Another</h3>
+  <form class="row" method="post" action="/load/open">
+    <input type="text" name="location" value="{{ open_location }}" required spellcheck="false" autocomplete="off"
+           placeholder="https://… or /path/to/index.json" aria-label="Index file URL or local path">
+    <button class="primary" type="submit">Open</button>
+  </form>
+  <p class="hint">An https:// URL or a local path. A URL is downloaded into <code>data/raw/index_files/</code> and a file elsewhere is copied there, so it joins the list.</p>
+  <form class="upload" method="post" action="/load/upload" enctype="multipart/form-data">
+    <label class="pick">Choose a file from your computer…
+      <input type="file" name="file" accept=".json,application/json" required onchange="if (this.files.length) this.form.submit()"></label>
+    <noscript><button type="submit">Open the chosen file</button></noscript>
+  </form>
+  {% if open_error %}<div class="notice error" role="alert" style="margin:10px 0 0">{{ open_error }}</div>{% endif %}
+</div>
+
+{% if index_error %}
+  <div class="notice error" role="alert">{{ index_error }}</div>
+{% elif progress_here and running %}
+  {% with job = running %}{% include "_load_progress.html" %}{% endwith %}
+{% elif files and not problems %}
+<form class="step" id="load-form" method="post" action="/load" data-downloads-off="{{ "0" if downloads_on else "1" }}"
+      data-big-files="{{ big_file_count }}" data-big-bytes="{{ big_bytes }}"
+      onsubmit="var b=this.querySelector('button[type=submit]'); b.disabled=true; b.textContent='Starting the load…';">
+  <input type="hidden" name="index" value="{{ location }}">
+  <h2>2. In-Network Files This Index Describes</h2>
+  {% if target_exists %}<div class="notice" role="status">This index is loaded ({{ target_loaded }} of {{ files | length }} in-network file{{ "" if files | length == 1 else "s" }}). Loading it again rebuilds its database; the current one is backed up first. <a href="#db-{{ target_db }}">See what it holds</a></div>{% endif %}
+  {% if error %}<div class="notice error" role="alert">{{ error }}{% if running %} <a href="/load/status/{{ running.id }}#load-progress">See its progress</a>{% endif %}</div>{% endif %}
+  {% if files | length >= big_file_count %}<div class="notice" role="note">This index lists {{ files | length }} in-network files. Loading many of them may take several minutes and produce a large database (each price is stored once per provider, so it can be many times the size of the files).</div>{% endif %}
+  {% for f in files %}
+  <label class="file" title="{{ f.plans | map(attribute='plan_name') | unique | join(', ') }}">
+    <input type="checkbox" name="url" value="{{ f.url }}">
+    <span>
+      <strong>{{ f.file }}</strong>
+      {% if f.loaded %}<span class="tag ok">loaded now</span>{% endif %}
+      {% set names = f.plans | map(attribute="plan_name") | unique | list %}
+      <span class="muted" style="display:block">{{ f.plans | length }} plan{{ "" if f.plans | length == 1 else "s" }}{% if names %}: {{ names[:3] | join(", ") }}{% if names | length > 3 %}, and {{ names | length - 3 }} more{% endif %}{% endif %}</span>
+    </span>
+  </label>
+  {# Outside the label so clicking a source doesn't toggle the checkbox. #}
+  <div class="sources" role="radiogroup" aria-label="Source for {{ f.file }}">
+    <label{% if not f.on_disk %} class="off" title="No local copy in data/raw/in_network_files/"{% endif %}><input type="radio" name="source:{{ f.url }}" value="local"{{ " checked" if f.on_disk else " disabled" }}> Local copy</label>
+    <label><input type="radio" name="source:{{ f.url }}" value="download"{{ "" if f.on_disk else " checked" }}> Download and keep</label>
+    <label><input type="radio" name="source:{{ f.url }}" value="web"> Straight from the web <span class="muted">(not saved)</span></label>
+  </div>
+  {# What Load fetches for this file, one line per source; the script shows the chosen source's (#41.5). #}
+  {% set default = "local" if f.on_disk else "download" %}
+  {% set size = f.size | filesizeformat if f.size is not none else none %}
+  <p class="fetch" data-url="{{ f.url }}" data-size="{{ f.size if f.size is not none else "" }}">
+    {%- if f.on_disk %}<span data-source="local"{{ " hidden" if default != "local" }}>on disk ({{ size }})</span>{% endif -%}
+    <span data-source="download"{{ " hidden" if default != "download" }}>will download {% if size %}{{ size }} {% endif %}from {{ f.host }}{% if not size %} (size unknown until download){% endif %}</span>
+    <span data-source="web"{{ " hidden" if default != "web" }}>will download {% if size %}{{ size }} {% endif %}from {{ f.host }}, not saved{% if not size %} (size unknown until download){% endif %}</span>
+  </p>
+  {# The plans (from the index) and the local copy's header, without loading or fetching anything (#35). #}
+  <details class="preview">
+    <summary>Preview</summary>
+    {% with p = f.preview %}{% include "_file_preview.html" %}{% endwith %}
+  </details>
+  {% endfor %}
+
+  <p class="download-total" data-download-total aria-live="polite">Tick the files to load.</p>
+  <p class="notice heads-up" data-heads-up hidden></p>
+  {% if free_bytes is not none %}{% if free_bytes < min_free_bytes %}<div class="notice error" role="alert">Only {{ free_bytes | filesizeformat }} free on the disk that holds the index databases: Load won’t start until at least {{ min_free_bytes | filesizeformat }} is free.</div>{% else %}<p class="hint">{{ free_bytes | filesizeformat }} free on the disk that holds the index databases.</p>{% endif %}{% endif %}
+  <p class="hint">Opening an index fetched only the index file; nothing else downloads until Load.{% if not downloads_on %}
+    <strong>Downloads are turned off in this app</strong>, so a file without a local copy can’t be loaded.{% endif %}</p>
+  <p class="hint" style="margin-top:14px">Loading builds <code>{{ target_db }}</code>, this index’s own database, with just the files you pick{% if target_exists %} (the one there now is backed up to the backups folder first, and replaced only if a file loads){% endif %}, and makes it the active index.</p>
+  <p><button class="primary" type="submit">Load selected files</button></p>
+</form>
+<script>
+  // #41.5: keep each file's "what Load fetches" line and the total in step with the ticked files and their sources.
+  (function () {
+    var form = document.getElementById("load-form");
+    if (!form) return;
+    var headsUp = form.querySelector("[data-heads-up]");
+    var total = form.querySelector("[data-download-total]"), off = form.dataset.downloadsOff === "1";
+    function size(n) {  // like Jinja's filesizeformat: 95.5 MB
+      if (n < 1000) return n + " Bytes";
+      var units = ["kB", "MB", "GB", "TB"], i = 0;
+      n /= 1000;
+      while (n >= 1000 && i < units.length - 1) { n /= 1000; i++; }
+      return n.toFixed(1) + " " + units[i];
+    }
+    function update() {
+      var ticked = 0, count = 0, bytes = 0, unknown = 0;
+      form.querySelectorAll("p.fetch").forEach(function (line) {
+        var url = line.dataset.url, source = "download", chosen = false;
+        form.querySelectorAll("input[type=radio]").forEach(function (r) {
+          if (r.name === "source:" + url && r.checked) source = r.value;
+        });
+        line.querySelectorAll("[data-source]").forEach(function (s) { s.hidden = s.dataset.source !== source; });
+        form.querySelectorAll("input[name=url]").forEach(function (c) { if (c.value === url && c.checked) chosen = true; });
+        if (!chosen) return;
+        ticked++;
+        if (source === "local") return;
+        count++;
+        if (line.dataset.size) bytes += Number(line.dataset.size); else unknown++;
+      });
+      var text;
+      if (!ticked) text = "Tick the files to load.";
+      else if (!count) text = "Nothing to download — all on disk.";
+      else {
+        text = "Load will download " + count + " file" + (count === 1 ? "" : "s");
+        if (!unknown) text += ", " + size(bytes) + ".";
+        else if (bytes) text += ": " + size(bytes) + " plus " + unknown + " of unknown size.";
+        else text += " (size unknown until download).";
+        if (off) text += " Downloads are turned off in this app, so " + (count === 1 ? "it" : "they") + " will fail.";
+      }
+      total.textContent = text;
+      // #42.3: a heads-up for big selections (many files, or many known bytes to read).
+      var bytesAll = 0;
+      form.querySelectorAll("p.fetch").forEach(function (line) {
+        form.querySelectorAll("input[name=url]").forEach(function (c) {
+          if (c.value === line.dataset.url && c.checked && line.dataset.size) bytesAll += Number(line.dataset.size);
+        });
+      });
+      var big = ticked >= Number(form.dataset.bigFiles) || bytesAll >= Number(form.dataset.bigBytes);
+      headsUp.hidden = !big;
+      headsUp.textContent = big ? "Heads-up: " + ticked + " in-network file" + (ticked === 1 ? "" : "s")
+        + (bytesAll ? " (" + size(bytesAll) + " known)" : "")
+        + "; this may take several minutes and produce a large database." : "";
+    }
+    form.addEventListener("change", update);
+    update();
+  })();
+</script>
+{% endif %}
+</section>
+<script>
+  // #42.1: refresh a running load's progress in place every second; when it's done, show its result.
+  (function () {
+    function poll() {
+      var panel = document.getElementById("load-progress");
+      if (!panel) return;
+      fetch(panel.dataset.progressUrl, {cache: "no-store"}).then(function (r) { return r.ok ? r.text() : null; })
+        .then(function (html) {
+          if (html === null) return;
+          if (html.indexOf('data-job="done"') !== -1) { window.location.href = panel.dataset.statusUrl; return; }
+          panel.outerHTML = html;
+          setTimeout(poll, 1000);
+        }).catch(function () { setTimeout(poll, 3000); });
+    }
+    setTimeout(poll, 1000);
+  })();
+</script>
+{% endblock %}

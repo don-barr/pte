@@ -1,0 +1,92 @@
+{# Statistics for one group: median first, then spread, the distribution (drag to pick a range, #18), outliers
+   and percentiles. With more than one group in scope: pick one. #}
+<section class="panel" id="p-stats" role="tabpanel">
+{% if not stats %}
+  <div class="card emptystate">
+    <p><strong>Statistics compare like with like.</strong> Pick one group: modifiers and places of service price different things.</p>
+    <div class="outbtns">
+      {% for g in groups[:3] %}<a class="outbtn" href="{{ g.href }}"><b class="ink">{{ g.label }}</b><br><span class="small">{{ "{:,}".format(g.count) }} {{ units[0] if g.count == 1 else units[1] }} · median {{ g.median | money }}</span></a>{% endfor %}
+    </div>
+    {% if groups | length > 3 %}
+    <details class="all-groups"><summary>All {{ groups | length }} groups</summary>
+      <ul>{% for g in groups %}<li><a href="{{ g.href }}">{{ g.label }}</a> <span class="small">{{ "{:,}".format(g.count) }} · {{ g.median | money }}</span></li>{% endfor %}</ul>
+    </details>
+    {% endif %}
+  </div>
+</section>
+{% else %}
+  {% set n = stats.count %}
+  {% set unit = units[0] if n == 1 else units[1] %}
+  {% if stats.min == stats.max %}
+  <div class="card hero">
+    <p class="same-rate">{% if n == 1 %}One {{ unit }}: {{ stats.min | money }}{% else %}All {{ "{:,}".format(n) }} {{ unit }} are {{ stats.min | money }}{% endif %}</p>
+    <dl class="kv">
+      <div class="stat"><dt>Providers</dt><dd>{{ "{:,}".format(stats.provider_count) }}</dd></div>
+      <div class="stat"><dt>EINs · NPIs</dt><dd>{{ "{:,}".format(stats.ein_count) }} · {{ "{:,}".format(stats.npi_count) }}</dd></div>
+    </dl>
+  </div>
+  {% else %}
+  <div class="card hero">
+    <div><div class="big">{{ stats.median | money }}</div><div class="biglbl">median of {{ "{:,}".format(n) }} {{ unit }}{% if group_by != "none" %} ({{ "{:,}".format(stats.row_count) }} rate{{ "" if stats.row_count == 1 else "s" }}){% endif %}</div></div>
+    <dl class="kv">
+      <div class="stat"><dt>Middle half (Q1–Q3)</dt><dd>{{ stats.q1 | money }} – {{ stats.q3 | money }}</dd></div>
+      {% if stats.iqr_over_median is not none %}
+      <div class="stat" title="How wide the middle half is, as a share of the median, and how far below and above the median the quartiles sit"><dt>IQR ÷ median</dt><dd>{{ "%.1f" | format(stats.iqr_over_median * 100) }}% <span class="sub">−{{ "%.1f" | format(stats.q1_below_median * 100) }}% / +{{ "%.1f" | format(stats.q3_above_median * 100) }}%</span></dd></div>
+      {% endif %}
+      <div class="stat"><dt>Range</dt><dd>{{ stats.min | money }} – {{ stats.max | money }}</dd></div>
+      <div class="stat"><dt>Providers</dt><dd>{{ "{:,}".format(stats.provider_count) }}</dd></div>
+      <div class="stat"><dt>Distinct prices</dt><dd>{{ "{:,}".format(stats.distinct_rates) }}</dd></div>
+      <div class="stat"><dt>EINs · NPIs</dt><dd>{{ "{:,}".format(stats.ein_count) }} · {{ "{:,}".format(stats.npi_count) }}</dd></div>
+    </dl>
+  </div>
+  <div class="statgrid">
+    <div class="card chartcard">
+      <div class="charthead"><h2 class="sec">Distribution</h2><span class="small">Drag across the chart to show only a price range</span></div>
+      <div class="chartbox" data-min="{{ stats.min }}" data-max="{{ stats.max }}" data-width="{{ chart_geometry.width }}"
+           data-left="{{ chart_geometry.left }}" data-right="{{ chart_geometry.right }}" data-href="{{ range_url }}">
+        {{ chart }}
+        <div class="brush" hidden></div>
+      </div>
+      <div class="legend">
+        <span><i class="k-bar"></i>{{ units[1][:1] | upper }}{{ units[1][1:] }} per price range</span>
+        <span><i class="k-out"></i>Outliers</span>
+        <span><i class="k-iqr"></i>Middle half</span>
+        <span><i class="k-med"></i>Median</span>
+        <span><i class="k-line"></i>Smoothed shape</span>
+        <span><i class="k-fence"></i>Outlier cut-offs</span>
+        {% if stats.p99 is not none %}<span><i class="k-pmark"></i>P99{% if stats.p99_9 is not none %}, P99.9{% endif %} (under the axis)</span>{% endif %}
+      </div>
+      <div class="selbar">
+        <span class="sel-text small">{% if ranged %}Showing {{ stats.min | money }} – {{ stats.max | money }} only.{% else %}Full range shown.{% endif %}</span>
+        {% if ranged %}<a class="fullrange" href="{{ range_url }}">Full range</a>{% endif %}
+      </div>
+    </div>
+    <div class="rail">
+      <div class="card">
+        <h2 class="sec">Outliers</h2>
+        <div class="outbtns">
+          {% if stats.low_fence < 0 %}<span class="outbtn off">No low outliers possible</span>
+          {% elif low_outlier_url %}<a class="outbtn" href="{{ low_outlier_url }}"><b>{{ "{:,}".format(stats.low_outliers) }}</b> below {{ stats.low_fence | money }}<br><span class="small">Show these</span></a>
+          {% else %}<span class="outbtn off"><b>0</b> below {{ stats.low_fence | money }}</span>{% endif %}
+          {% if high_outlier_url %}<a class="outbtn" href="{{ high_outlier_url }}"><b>{{ "{:,}".format(stats.high_outliers) }}</b> above {{ stats.high_fence | money }}<br><span class="small">Show these</span></a>
+          {% else %}<span class="outbtn off"><b>0</b> above {{ stats.high_fence | money }}</span>{% endif %}
+        </div>
+      </div>
+      <div class="card">
+        <h2 class="sec">Percentiles</h2>
+        <dl class="kv pct">
+          {% for label, value, note in percentiles %}
+          <div class="stat pct"{% if note %} title="{{ note }}"{% endif %}><dt>{{ label }}</dt><dd{% if value is none %} class="na"{% endif %}>{{ value | money if value is not none else "n/a" }}</dd></div>
+          {% endfor %}
+        </dl>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <details class="how"><summary>How These Numbers Are Computed</summary>
+    <p>Over all {{ "{:,}".format(n) }} {{ unit }} in scope, not just one page of rates. A row of the file is one price for one provider group and NPI, so a group listing many NPIs at one price repeats once per NPI. <strong>Count by</strong> decides what counts once: Provider counts each provider’s price once (EIN + price + group + file), NPI each clinician’s price once, Every row each row of the file. The medians differ because the weighting differs: by Provider every provider’s price counts once, whether it has one clinician or 500, while by NPI and Every row a price counts once per clinician, so a few large groups can pull the median toward their price. When both networks are searched, a provider’s same price in each counts once per network; pick one network under Search in to count it once.</p>
+    <p>No averages are shown: an average can be a price nobody negotiated. The median is the standard median (with an even number of values it is the midpoint of the two middle prices). Quartiles and percentiles interpolate between values the same way (Excel QUARTILE.INC). A price is an outlier when it lies more than 1.5 times the Q1–Q3 range below Q1 or above Q3: far from the middle half of prices. P99.9 needs at least 1,000 values and P99.99 10,000.</p>
+    <p>What explains price (Compare Groups) is the share of the variation in price, measured in percentages (a $10 vs $20 gap counts the same as $100 vs $200), that lies between groups when grouping by place of service, by modifier, and by both; the rest is within a group, mostly which provider. It is over every row of the code’s own rates.</p>
+  </details>
+</section>
+{% endif %}

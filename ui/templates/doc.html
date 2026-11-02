@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} · Price Transparency Explorer{% endblock %}
+{% block head %}
+<style>
+  .doc-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;
+              margin: 0 0 28px; }
+  .doc-tabs a { display: block; padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px;
+                background: var(--surface); color: var(--muted); text-decoration: none; }
+  .doc-tabs a:hover { border-color: var(--accent); color: var(--text); }
+  .doc-tabs a[aria-current="page"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent);
+                                     color: var(--text); }
+  .doc-tabs strong { display: block; font-size: 1.05rem; color: var(--text); margin-bottom: 2px; }
+  .doc-tabs a[aria-current="page"] strong { color: var(--accent); }
+  .doc-tabs .open { font-size: .75rem; color: var(--accent); margin-left: 6px; font-weight: 600; }
+  .doc-tabs span.blurb { font-size: .88rem; }
+  .doc-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; align-items: start; }
+  .doc-side { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; font-size: .88rem; }
+  .doc-side h2 { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
+                 margin: 0 0 6px; }
+  .doc-side nav + h2 { margin-top: 20px; }
+  .doc-side ul { list-style: none; margin: 0; padding: 0; }
+  .doc-side li { margin: 2px 0; }
+  .doc-side a { color: var(--muted); text-decoration: none; }
+  .doc-side a:hover { color: var(--text); }
+  .doc-side .docs-list a[aria-current="page"] { color: var(--text); font-weight: 600; }
+  .doc-side .toc ul ul { padding-left: 12px; }
+
+  .doc { max-width: 80ch; line-height: 1.65; }
+  .doc .source { color: var(--muted); font-size: .85rem; margin: 0 0 12px;
+                 font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .doc h1 { font-size: 1.8rem; margin: 0 0 16px; }
+  .doc h2 { font-size: 1.35rem; margin: 2em 0 .5em; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+  .doc h3 { font-size: 1.1rem; margin: 1.6em 0 .4em; }
+  .doc h4 { font-size: 1rem; margin: 1.4em 0 .4em; }
+  .doc :is(h1, h2, h3, h4, h5, h6) { scroll-margin-top: 16px; }
+  .doc a.headerlink { margin-left: 8px; color: var(--muted); text-decoration: none; opacity: 0; font-weight: 400; }
+  .doc :is(h1, h2, h3, h4, h5, h6):hover a.headerlink, .doc a.headerlink:focus { opacity: 1; }
+  .doc p, .doc ul, .doc ol { margin: 0 0 1em; }
+  .doc li > ul, .doc li > ol { margin-bottom: 0; }
+  .doc img { max-width: 100%; border: 1px solid var(--border); border-radius: 8px; }
+  .doc blockquote { margin: 0 0 1em; padding: 4px 14px; border-left: 3px solid var(--border); color: var(--muted); }
+  .doc code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88em;
+              background: var(--row-alt); border: 1px solid var(--border); border-radius: 4px; padding: 0 4px; }
+  .doc pre { background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+             padding: 12px 14px; overflow-x: auto; line-height: 1.45; margin: 0 0 1em; }
+  .doc pre code { background: none; border: 0; padding: 0; font-size: .85rem; }
+  .doc table { border-collapse: collapse; font-size: .9rem; margin: 0 0 1em; background: var(--surface);
+               border: 1px solid var(--border); display: block; overflow-x: auto; max-width: 100%; }
+  .doc th, .doc td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .doc th { font-weight: 600; }
+  .doc tbody tr:nth-child(even) { background: var(--row-alt); }
+  .doc tbody tr:last-child td { border-bottom: 0; }
+  .doc hr { border: 0; border-top: 1px solid var(--border); margin: 2em 0; }
+  .notice { padding: 12px 14px; border-radius: 6px; border: 1px solid var(--warn-border);
+            background: var(--warn-bg); margin-bottom: 16px; }
+</style>
+{% endblock %}
+{% block content %}
+{# {{ docs | length }} documents, side by side at the top, so it's plain there is more than this one. #}
+<nav class="doc-tabs" aria-label="Documents">
+  {% for d in docs %}<a href="/docs/{{ d.slug }}"{% if d.slug == slug %} aria-current="page"{% endif %}><strong>{{ d.title }}{% if d.slug == slug %}<span class="open">Open</span>{% endif %}</strong><span class="blurb">{{ d.blurb }}</span></a>
+  {% endfor %}
+</nav>
+<div class="doc-layout">
+  <aside class="doc-side">
+    {% if has_toc %}
+    <h2>On This Page</h2>
+    <nav aria-label="On This Page">{{ toc | safe }}</nav>
+    {% endif %}
+  </aside>
+
+  <article class="doc">
+    <p class="source">{{ path }}</p>
+    {% if body is none %}
+    <h1>{{ title }}</h1>
+    <p class="notice">This doc is not written yet: <code>{{ path }}</code> doesn't exist in the repository.
+      Once it does, it shows up here.</p>
+    {% else %}
+    {{ body | safe }}
+    {% endif %}
+  </article>
+</div>
+{% endblock %}

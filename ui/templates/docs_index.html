@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{% if missing_slug %}Not Found{% else %}Docs{% endif %} · Price Transparency Explorer{% endblock %}
+{% block head %}
+<style>
+  .docs-index { max-width: 80ch; }
+  .docs-index ul { list-style: none; padding: 0; margin: 0; background: var(--surface);
+                   border: 1px solid var(--border); border-radius: 8px; }
+  .docs-index li { padding: 10px 14px; border-bottom: 1px solid var(--border); display: flex;
+                   justify-content: space-between; gap: 12px; align-items: baseline; }
+  .docs-index li:last-child { border-bottom: 0; }
+  .docs-index .file { color: var(--muted); font-size: .85rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .notice { padding: 12px 14px; border-radius: 6px; border: 1px solid var(--warn-border);
+            background: var(--warn-bg); margin-bottom: 16px; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="docs-index">
+  {% if missing_slug %}
+  <h1>No Such Doc</h1>
+  <p class="notice">There is no doc called <strong>{{ missing_slug }}</strong>. These are the ones we have:</p>
+  {% else %}
+  <h1>Docs</h1>
+  <p class="lede">The project's own documentation, read from the repository on every visit.</p>
+  {% endif %}
+  <ul>
+    {% for d in docs %}
+    <li>
+      <a href="/docs/{{ d.slug }}">{{ d.title }}</a>
+      <span class="file">{{ d.path }}{% if not d.exists %} · not written yet{% endif %}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

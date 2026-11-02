@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "_table_macros.html" import sort_th %}
+{% block title %}Prices By Procedure · Price Transparency Explorer{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/doors.css?v={{ static_version("doors.css") }}">
+<script src="/static/doors.js?v={{ static_version("doors.js") }}" defer></script>
+{% endblock %}
+{% block content %}
+{# Prices By Procedure, empty (#40): one box over every procedure; typing a code or a name filters the list. #}
+{% set door_title, door_action, door_api, door_kind = "Prices By Procedure", "/by-procedure", "/api/procedures", "procedure" %}
+{% set door_placeholder, door_value, door_compact, door_list = "Billing code or procedure name, e.g. 99213 or massage", q, False, "door-list" %}
+{% include "_door.html" %}
+{% if no_data %}
+<div class="notice" role="alert">No data loaded yet. Load an index on the <a href="/">Load Data</a> page first.</div>
+{% else %}
+<section class="listing" aria-label="Procedures">
+  {% set tail = "Revenue codes (RC) are hospital departments, not procedures." %}
+  <p class="muted listcount" data-count data-all="{{ all }}" data-noun="{{ "procedure" if all == 1 else "procedures" }}" data-order="{{ order }}" data-tail="{{ tail }}">{% if q %}{{ "{:,}".format(total) }} of {{ "{:,}".format(all) }} {{ "procedure" if all == 1 else "procedures" }} match “{{ q }}”{% else %}All {{ "{:,}".format(all) }} {{ "procedure" if all == 1 else "procedures" }}{% endif %}, {{ order }}. {{ tail }}</p>
+  {# Every header sorts the whole list (no sort: the list's own order); the script re-sorts in place. #}
+  {% set keep, path = [("q", q)] if q else [], "/by-procedure" %}
+  <table class="list" id="door-list" data-sort="{{ sort }}" data-dir="{{ direction }}">
+    <thead><tr>{{ sort_th("code", "Code", sort, direction, keep, path) }}{{ sort_th("name", "Procedure", sort, direction, keep, path) }}
+      {{- sort_th("type", "Type", sort, direction, keep, path) }}{{ sort_th("rates", "Rates", sort, direction, keep, path, cls="num", first="desc") }}
+      {{- sort_th("eins", "Providers (EINs)", sort, direction, keep, path, cls="num", first="desc") }}</tr></thead>
+    <tbody>
+      {% for p in procedures %}
+      <tr data-href="{{ p.href }}"><td class="code"><a href="{{ p.href }}">{{ p.billing_code }}</a></td>
+        <td>{{ p.name }}</td>
+        <td>{% if p.billing_code_type == "RC" %}<span class="badge hosp">hospital department</span>{% else %}{{ p.billing_code_type }}{% endif %}</td>
+        <td class="num">{{ "{:,}".format(p.rate_count) }}</td><td class="num">{{ "{:,}".format(p.ein_count) }}</td></tr>
+      {% else %}
+      <tr><td colspan="5" class="muted">No code or procedure name matches “{{ q }}”.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="muted more" data-more{% if total <= procedures | length %} hidden{% endif %}>The first {{ procedures | length }} of {{ "{:,}".format(total) }}; keep typing to narrow.</p>
+</section>
+{% endif %}
+{% endblock %}

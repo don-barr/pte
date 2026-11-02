@@ -1,0 +1,96 @@
+{# Rates: the table. The filter row hides behind Filters; one-value columns fold into "Same for every row";
+   with Count by Provider / NPI a line is one provider (or NPI) price, its NPIs and names listed. #}
+{% from "_table_macros.html" import sort_th, column_chooser %}
+{% set params = rates_params %}
+{% set fv = filter_values %}
+{% set shown_to = result.offset + result.results | length %}
+<section class="panel" id="p-rates" role="tabpanel">
+  <form id="filters" class="filters" method="get" action="{{ path }}">
+    {% for name, value in hidden_params %}<input type="hidden" name="{{ name }}" value="{{ value }}">{% endfor %}
+    <input type="hidden" name="sort" value="{{ sort }}"><input type="hidden" name="dir" value="{{ direction }}">
+  </form>
+  <div class="toolbar">
+    <div class="l">
+      <button type="button" class="btn sm" id="filters-toggle" aria-controls="filter-row" aria-pressed="{{ "true" if filter_count else "false" }}">Filters{% if filter_count %} <span class="count">{{ filter_count }}</span>{% endif %}</button>
+      {{ column_chooser("results") }}
+    </div>
+    <div class="r small">{{ "{:,}".format(result.offset + 1) }}–{{ "{:,}".format(shown_to) }} of {{ "{:,}".format(result.total) }} {{ units[0] if result.total == 1 else units[1] }}{% if group_by != "none" %} ({{ "{:,}".format(result.row_count) }} rate{{ "" if result.row_count == 1 else "s" }}){% endif %}</div>
+  </div>
+  {% if same %}<p class="same">Same for every row: {{ same | join(" · ") }}</p>{% endif %}
+  <div class="card"><div class="tablewrap">
+    <table id="results" class="rt">
+      <thead>
+        <tr>
+          {{ sort_th("rate", "Rate", sort, direction, params, path, cls="price") }}
+          {% for c in columns %}{{ sort_th(c, column_labels[c], sort, direction, params, path) }}{% endfor %}
+          {% if result.file_count > 1 %}{{ sort_th("source", "File", sort, direction, params, path) }}{% endif %}
+        </tr>
+        <tr class="filter-row" id="filter-row"{% if not filter_count %} hidden{% endif %}>
+          <th data-col="rate" class="price">
+            <input form="filters" name="rate_min" value="{{ fv.rate_min }}" inputmode="decimal" placeholder="min" aria-label="Minimum rate">
+            <input form="filters" name="rate_max" value="{{ fv.rate_max }}" inputmode="decimal" placeholder="max" aria-label="Maximum rate">
+          </th>
+          {% for name in columns %}
+          {%- set label = column_labels[name] %}
+          {%- if name in ("npi", "ein") %}
+          <th data-col="{{ name }}" class="fixed" title="Set with Narrow to a provider">above</th>
+          {%- else %}
+          {%- set choice = choices.get(name) or {"control": "text", "values": None} %}
+          {%- set ops = [("equals", "is"), ("not_equals", "is not"), ("empty", "is empty"), ("not_empty", "is not empty")]
+                        if choice.control in ("select", "fixed") else op_labels.items() | list %}
+          {#- A typed value with no operator is a contains filter; an empty dropdown starts on "is". #}
+          {%- set op = fv[name ~ "_op"] or ("contains" if fv[name] else ops[0][0]) %}
+          {%- if op not in ops | map("first") | list %}{% set ops = ops + [(op, op_labels[op])] %}{% endif %}
+          <th data-col="{{ name }}" title="{{ "{:,}".format(choice.distinct) if choice.distinct is defined else "" }} distinct values{{ " (some rows empty)" if choice.has_empty }}">
+            <select form="filters" name="{{ name }}_op" class="filter-op" aria-label="{{ label }} filter operator">
+              {% for value, text in ops %}<option value="{{ value }}"{% if op == value %} selected{% endif %}>{{ text }}</option>{% endfor %}
+            </select>
+            {% if choice.control in ("select", "fixed") %}
+            <select form="filters" name="{{ name }}" class="filter-value" aria-label="Filter {{ label }}">
+              <option value="">Any</option>
+              {% for v in choice["values"] %}<option value="{{ v }}"{% if fv[name] == v %} selected{% endif %}>{{ v.replace(",", ", ") }}</option>{% endfor %}
+              {% if fv[name] and fv[name] not in choice["values"] %}<option value="{{ fv[name] }}" selected>{{ fv[name] }}</option>{% endif %}
+            </select>
+            {% elif choice.control == "suggest" %}
+            <span class="combo"><input form="filters" name="{{ name }}" value="{{ fv[name] }}" data-options="choices-{{ name }}" placeholder="type or pick…" aria-label="Filter {{ label }}" autocomplete="off"></span>
+            <script type="application/json" id="choices-{{ name }}">{{ choice["values"] | tojson }}</script>
+            {% else %}
+            <input form="filters" name="{{ name }}" value="{{ fv[name] }}" placeholder="type…" aria-label="Filter {{ label }}">
+            {% endif %}
+          </th>
+          {%- endif %}
+          {% endfor %}
+          {% if result.file_count > 1 %}<th data-col="source"></th>{% endif %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in result.results %}
+        <tr>
+          <td data-col="rate" class="price">{{ r.negotiated_rate | money }}{% if r.negotiated_type and r.negotiated_type != "negotiated" %}<div class="muted">{{ r.negotiated_type }}</div>{% endif %}</td>
+          {% for c in columns %}
+          {% if c == "billed_as" %}<td data-col="billed_as">{{ billed_labels.get(r.billed_as, r.billed_as) }}</td>
+          {% elif c == "procedure" %}<td data-col="procedure">{{ r.procedure or "—" }}{% if procedure_names.get(r.procedure) %}<div class="muted">{{ procedure_names[r.procedure] }}</div>{% endif %}</td>
+          {% elif c == "provider" %}{% set prov = provider_url(r.ein) %}<td data-col="provider" class="provider">{% if r.names | length > 1 %}<details><summary>{{ r.names[0] }} <span class="muted">+{{ r.names | length - 1 }}</span></summary>{{ r.names[1:] | join("<br>" | safe) }}</details>{% if prov %}<a class="small" href="{{ prov }}">Prices By Provider</a>{% endif %}{% elif prov and r.business_name %}<a href="{{ prov }}" title="This provider’s prices for every code">{{ r.business_name }}</a>{% else %}{{ r.business_name or "—" }}{% endif %}</td>
+          {% elif c == "ein" %}<td data-col="ein" class="nowrap">{% if r.ein %}<a href="{{ provider_url(r.ein) }}">{{ r.ein }}</a>{% else %}—{% endif %}</td>
+          {% elif c == "npi" %}<td data-col="npi" class="nowrap">{% if r.npi_count > 1 %}<details><summary>{{ "{:,}".format(r.npi_count) }} NPIs</summary>{{ r.npis | join("<br>" | safe) }}{% if r.npi_count > r.npis | length %}<br><span class="muted">and {{ "{:,}".format(r.npi_count - r.npis | length) }} more</span>{% endif %}</details>{% else %}{{ r.npi or (r.npis[0] if r.npis else "—") }}{% endif %}</td>
+          {% elif c == "billing_class" %}<td data-col="billing_class">{{ r.billing_class or "—" }}</td>
+          {% elif c == "setting" %}<td data-col="setting">{{ r.setting or "—" }}</td>
+          {% elif c == "service_codes" %}<td data-col="service_codes" title="{{ r.service_codes | place_tooltip }}">{{ (r.service_codes or "—").replace(",", ", ") }}</td>
+          {% elif c == "modifiers" %}<td data-col="modifiers" title="{{ r.modifiers | modifier_tooltip }}">{{ (r.modifiers or "—").replace(",", ", ") }}</td>
+          {% endif %}
+          {% endfor %}
+          {% if result.file_count > 1 %}
+          <td data-col="source" class="source"><a href="{{ r.source_url }}" rel="noopener" title="{{ r.source_file }}{% if r.source_last_updated_on %} · updated {{ r.source_last_updated_on }}{% endif %}">{{ r.source_file | short_name }}</a></td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div></div>
+  {% if result.offset > 0 or shown_to < result.total %}
+  <nav class="pager">
+    <span>{% if result.offset > 0 %}<a href="{{ page_url([result.offset - result.limit, 0] | max) }}">← Previous {{ result.limit }}</a>{% endif %}</span>
+    <span>{% if shown_to < result.total %}{{ "{:,}".format(result.total - shown_to) }} more · <a href="{{ page_url(shown_to) }}">Next {{ result.limit }} →</a>{% endif %}</span>
+  </nav>
+  {% endif %}
+</section>

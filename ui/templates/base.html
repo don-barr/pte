@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Price Transparency Explorer{% endblock %}</title>
+  <style>
+    :root {
+      --bg: #f7f7f5; --surface: #fff; --text: #1d1d1f; --muted: #6b6b70; --border: #e2e2e0;
+      --accent: #1f5fbf; --accent-text: #fff; --warn-bg: #fff6e0; --warn-border: #f0d48a;
+      --err-bg: #fdecec; --err-border: #f1b5b5; --row-alt: #fafaf8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #17171a; --surface: #202024; --text: #ececee; --muted: #a0a0a8; --border: #34343a;
+        --accent: #6aa0ff; --accent-text: #0d0d10; --warn-bg: #3a3118; --warn-border: #6b5a26;
+        --err-bg: #3a1f1f; --err-border: #6b3434; --row-alt: #25252a;
+      }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text);
+           font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+    h1 { font-size: 1.4rem; margin: 0 0 4px; }
+    .lede { color: var(--muted); margin: 0 0 20px; }
+    a { color: var(--accent); }
+    th.sortable a { color: inherit; text-decoration: none; display: inline-flex; gap: 4px; align-items: baseline; }
+    th.sortable .arrow { font-size: .75em; color: var(--muted); }
+    th.sortable[aria-sort="ascending"] .arrow, th.sortable[aria-sort="descending"] .arrow { color: var(--accent); }
+    .table-tools { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+    details.columns { position: relative; font-size: .9rem; margin-bottom: 8px; }
+    details.columns summary { cursor: pointer; padding: 4px 10px; border: 1px solid var(--border);
+                              border-radius: 6px; background: var(--surface); list-style: none; }
+    details.columns summary::after { content: " ▾"; color: var(--muted); }
+    details.columns .column-list { position: absolute; right: 0; z-index: 2; margin-top: 4px; padding: 8px 12px;
+                                   background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+                                   box-shadow: 0 4px 16px rgba(0,0,0,.15); white-space: nowrap; }
+    details.columns label { display: block; padding: 2px 0; cursor: pointer; }
+    form.dev-restart { margin: 0; }
+    form.dev-restart button { font: inherit; font-size: .8rem; padding: 4px 10px; cursor: pointer; border-radius: 6px;
+                              border: 1px solid var(--border); background: var(--surface); color: var(--muted); }
+    header.site { background: var(--surface); border-bottom: 1px solid var(--border); }
+    header.site nav { max-width: 1200px; margin: 0 auto; padding: 10px 16px; display: flex; flex-wrap: wrap;
+                      gap: 4px 18px; align-items: baseline; font-size: .92rem; }
+    header.site .brand { font-weight: 700; color: var(--text); text-decoration: none; margin-right: auto; }
+    header.site nav a:not(.brand) { color: var(--muted); text-decoration: none; padding: 2px 0;
+                                    border-bottom: 2px solid transparent; }
+    header.site nav a:not(.brand):hover { color: var(--text); }
+    header.site nav a[aria-current="page"] { color: var(--text); border-bottom-color: var(--accent); }
+    thead tr:first-child th[data-col] { position: sticky; }
+    .col-resize { position: absolute; top: 0; right: -4px; width: 9px; height: 100%; cursor: col-resize; z-index: 3; touch-action: none; }
+    .col-resize::after { content: ""; position: absolute; top: 20%; bottom: 20%; left: 4px; width: 1px; background: var(--border); }
+    .col-resize:hover::after, body.resizing .col-resize::after { background: var(--accent); width: 2px; }
+    body.resizing { cursor: col-resize; user-select: none; }
+    td { overflow-wrap: anywhere; }
+    details.columns button { font: inherit; font-size: .85rem; margin-top: 6px; padding: 2px 8px; cursor: pointer; }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+  {% set here = request.url.path if request else "" %}
+  <header class="site">
+    <nav aria-label="Main">
+      <a class="brand" href="/">Price Transparency Explorer</a>
+      <a href="/"{% if here == "/" or here == "/load" or here.startswith("/load/") or here.startswith("/indexes/") %} aria-current="page"{% endif %}>Load Data</a>
+      {# The two doors (#40): prices by procedure, prices by provider. #}
+      <a href="/by-procedure"{% if here == "/by-procedure" or here.startswith("/by-procedure/") %} aria-current="page"{% endif %}>Prices By Procedure</a>
+      <a href="/by-provider"{% if here == "/by-provider" or here.startswith("/by-provider/") %} aria-current="page"{% endif %}>Prices By Provider</a>
+      <a href="/docs"{% if here == "/docs" or here.startswith("/docs/") %} aria-current="page"{% endif %}>Docs</a>
+      {% if dev_tools %}
+      <form class="dev-restart" method="post" action="/dev/restart">
+        <button type="submit" title="Restart the local server (dev only)">&#128260; Restart server</button>
+      </form>
+      {% endif %}
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+
+  <script src="/static/tables.js?v={{ static_version() }}" defer></script>
+</body>
+</html>

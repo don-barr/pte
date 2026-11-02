@@ -1,0 +1,20 @@
+{# The code, its type (when one number is two codes), and one meta line. #}
+{% set rows = result.row_count %}
+<section class="results-head">
+  <div class="title-row">
+    <h1 class="code"{% if code %} title="{{ code.name }}{% if code.description and code.description != code.name %}: {{ code.description }}{% endif %}"{% endif %}>{{ result.billing_code }} <span class="cname">{{ code_title }}</span></h1>
+    {% if code_types | length > 1 %}
+    <nav class="typeswitch" aria-label="Code type">
+      {% for t in code_types %}
+      <a href="{{ type_url(t.billing_code_type) }}" title="{{ t.name }}"{% if t.billing_code_type == code_type %} aria-current="true"{% endif %}>{{ t.billing_code_type }} <span class="n">{{ "{:,}".format(t.rate_count) }}</span></a>
+      {% endfor %}
+    </nav>
+    {% endif %}
+  </div>
+  <p class="meta"><strong>{{ "{:,}".format(rows) }} rate{{ "" if rows == 1 else "s" }}{% if result.filters %} match{{ "es" if rows == 1 }} your filters{% endif %}</strong>
+ in {{ result.file_count }} file{{ "" if result.file_count == 1 else "s" }}
+    {%- if facility_count and code_type != "RC" %}
+      {%- if include_facility %} · includes {{ "{:,}".format(facility_count) }} hospital rate{{ "" if facility_count == 1 else "s" }} billed under a revenue code <a href="{{ facility_url }}">Hide</a>
+      {%- else %} · {{ "{:,}".format(facility_count) }} hospital rate{{ "" if facility_count == 1 else "s" }} hidden <a href="{{ facility_url }}">Show</a>{% endif %}
+    {%- endif %}</p>
+</section>

@@ -1,0 +1,21 @@
+{# A running load's progress (#42.1, #42.2), given job (Jobs.snapshot). Shown at the top of the Load Data page, or in
+   place of the Load form right after Load was pressed; the script on the page swaps in a fresh copy every second
+   from data-progress-url (without JavaScript, the page reloads itself). #}
+{% set source_labels = {"local": "local copy", "download": "download and keep", "web": "from the web, not saved"} %}
+{% set secs = job.elapsed | int %}
+<div class="step load-progress" id="load-progress" role="status" data-job="running"
+     data-progress-url="/load/progress/{{ job.id }}" data-status-url="/load/status/{{ job.id }}">
+  <h2>Loading {{ job.index }}</h2>
+  <p class="load-facts">{{ job.files_done }} of {{ job.files_total }} file{{ "" if job.files_total == 1 else "s" }} done · {{ "{:,}".format(job.rates) }} rate{{ "" if job.rates == 1 else "s" }} so far · {% if secs >= 60 %}{{ secs // 60 }} min {{ "%02d" | format(secs % 60) }} s{% else %}{{ secs }} s{% endif %} elapsed{% if job.current %} · now: {{ job.current.file }}{% endif %}</p>
+  <ol class="load-steps">
+    <li class="{{ "now" if job.stage == "loading" else "done" }}"><strong>Load the files</strong> <span class="muted">· {{ "in progress" if job.stage == "loading" else "done" }}</span>
+      <ul class="progress">
+        {% for f in job.files %}
+        <li data-stage="{{ f.stage }}"><span class="file-name">{{ f.file }}</span> <span class="muted">· {{ source_labels.get(f.source, "local copy if there is one, else download") }}</span> · <span class="stage">{% if f.stage == "waiting" %}Waiting{% elif f.stage == "downloading" and not f.bytes and not f.total %}Downloading: waiting for the server{% elif f.stage == "downloading" %}Downloading {{ (f.bytes or 0) | filesizeformat }}{% if f.total %} of {{ f.total | filesizeformat }}{% endif %}{% elif f.stage == "reading" %}Reading{% elif f.stage == "saving" %}Saving rates: {{ "{:,}".format(f.rows or 0) }} so far · database {{ (f.db_bytes or 0) | filesizeformat }}{% elif f.error %}✗ {{ f.error }}{% else %}✓ {{ "{:,}".format(f.rate_count or 0) }} rate{{ "" if f.rate_count == 1 else "s" }}{% endif %}</span></li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li class="{{ "now" if job.stage == "activating" else "later" }}"><strong>Make it the active index</strong> <span class="muted">· {{ "Making it active…" if job.stage == "activating" else "not yet: after the files load" }}</span></li>
+  </ol>
+  <p class="hint">This page updates itself until the load is done. Leaving or reloading it doesn’t stop the load, and the rest of the app keeps working meanwhile.</p>
+</div>

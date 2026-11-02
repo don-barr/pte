@@ -1,0 +1,19 @@
+{# A header cell that sorts the table by `key`: clicking the current column flips its direction.
+   `params` is a list of (name, value) pairs to keep in the link, e.g. the code and picked files. `first` is the
+   direction of a column's first click ("desc" for counts: most first). #}
+{% macro sort_th(key, label, sort, direction, params, path, cls="", first="asc") -%}
+  {%- set active = key == sort -%}
+  {%- set next_dir = ("asc" if direction == "desc" else "desc") if active else first -%}
+  <th data-col="{{ key }}" class="sortable {{ cls }}"{% if first != "asc" %} data-first="{{ first }}"{% endif %}
+      aria-sort="{{ ('ascending' if direction == 'asc' else 'descending') if active else 'none' }}">
+    <a href="{{ path }}?{{ (params + [("sort", key), ("dir", next_dir)]) | urlencode }}">{{ label }}<span class="arrow" aria-hidden="true">{{ ("▲" if direction == "asc" else "▼") if active else "↕" }}</span></a>
+  </th>
+{%- endmacro %}
+
+{# "Columns" menu: the script in base.html fills it with a checkbox per header of table#{{ table_id }}. #}
+{% macro column_chooser(table_id) -%}
+  <details id="columns" class="columns" data-table="{{ table_id }}">
+    <summary>Columns</summary>
+    <div class="column-list"></div>
+  </details>
+{%- endmacro %}

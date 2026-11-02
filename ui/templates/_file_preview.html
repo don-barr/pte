@@ -1,0 +1,56 @@
+{# One in-network file's preview (#35): `p` is api.load_page.file_preview(). Shown under the file in step 2 of the
+   Load page, and on its own at /load/preview. Nothing here was fetched: plans come from the index, the rest from the
+   local copy's first bytes and the database. #}
+{% set labels = {"reporting_entity_name": "Reporting entity", "reporting_entity_type": "Entity type",
+                 "version": "Schema version", "last_updated_on": "Last updated on"} %}
+<div class="file-preview">
+  <dl class="facts">
+    <dt>URL</dt><dd><code>{{ p.url }}</code></dd>
+    <dt>Local copy</dt>
+    {% if p.local %}
+    <dd>{{ p.local.size | filesizeformat }} · saved {{ p.local.modified[:16] | replace("T", " ") }} UTC
+      <span class="muted">· <code>{{ p.local.path }}</code></span></dd>
+    {% for key, label in labels.items() %}
+    <dt>{{ label }}</dt>
+    <dd>{% if p.local.header[key] is not none %}{{ p.local.header[key] }}{% else %}<span class="muted">not in the file’s header</span>{% endif %}</dd>
+    {% endfor %}
+    {% else %}
+    <dd>Not downloaded yet <span class="muted">(the header is read from a local copy; previewing fetches nothing)</span></dd>
+    {% endif %}
+    <dt>In the database</dt>
+    <dd>{% if not p.loaded %}Not loaded
+      {% elif p.loaded.error %}<span class="tag bad">last load failed</span> {{ p.loaded.error }}
+      {% else %}<span class="tag ok">loaded</span> {{ "{:,}".format(p.loaded.rate_count) }} rate{{ "" if p.loaded.rate_count == 1 else "s" }}{% if p.loaded.loaded_at %} <span class="muted">· {{ p.loaded.loaded_at[:16] | replace("T", " ") }}</span>{% endif %}
+      {% endif %}</dd>
+  </dl>
+
+  {% set several = [] %}{% for n in p.names if n.plan_ids | length > 1 %}{% set _ = several.append(n) %}{% endfor %}
+  <p class="plan-summary"><strong>{{ p.plan_count }} plan{{ "" if p.plan_count == 1 else "s" }}</strong>
+    · {{ p.name_count }} name{{ "" if p.name_count == 1 else "s" }}
+    · {{ p.plan_id_count }} plan ID{{ "" if p.plan_id_count == 1 else "s" }}
+    <span class="muted">(from the index)</span></p>
+  {% if several %}
+  <p class="hint">{{ several | length }} of the {{ p.name_count }} plan name{{ "" if p.name_count == 1 else "s" }} appear{{ "s" if several | length == 1 else "" }} under more than one plan ID,
+    e.g. “{{ several[0].plan_name }}” under {{ several[0].plan_ids | join(", ") }}.</p>
+  {% endif %}
+  <p class="hint">{% if p.shared_with %}Other files in this index that cover some of these plans:
+    {% for s in p.shared_with %}<strong>{{ s.file }}</strong> ({{ s.plan_ids | join(", ") }}){{ "; " if not loop.last }}{% endfor %}
+    {% else %}No other file in this index covers any of these plans.{% endif %}</p>
+  <div class="table-wrap plans">
+    <table class="result">
+      <thead><tr><th>Plan Name</th><th>Plan ID</th><th>Market</th><th>Issuer</th></tr></thead>
+      <tbody>
+      {% for n in p.names %}
+        {% for plan in p.plans if (plan.plan_name or "") == n.plan_name %}
+        <tr{% if loop.first %} class="group"{% endif %}>
+          {% if loop.first %}<td rowspan="{{ loop.length }}">{{ n.plan_name or "—" }}{% if n.plan_ids | length > 1 %} <span class="tag">{{ n.plan_ids | length }} plan IDs</span>{% endif %}</td>{% endif %}
+          <td class="nowrap">{{ plan.plan_id }} <span class="muted">{{ (plan.plan_id_type or "") | upper }}</span></td>
+          <td class="nowrap">{{ plan.plan_market_type or "—" }}</td>
+          <td>{{ plan.issuer_name or "—" }}</td>
+        </tr>
+        {% endfor %}
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

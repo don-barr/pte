@@ -1,0 +1,6250 @@
+{
+  "reporting_entity_name": "Centene Management Company LLC",
+  "reporting_entity_type": "Third Party Administrator",
+  "version": "2.0.0",
+  "last_updated_on": "2026-10-06",
+  "provider_references": [
+    {
+      "provider_group_id": 1,
+      "network_name": [],
+      "provider_groups": [
+        {
+          "npi": [
+            1396747861
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3471596",
+            "business_name": "Minkowitz Consulting Pathologists PC"
+          }
+        }
+      ]
+    },
+    {
+      "provider_group_id": 157,
+      "network_name": [],
+      "provider_groups": [
+        {
+          "npi": [
+            1932280666
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3964321",
+            "business_name": "Westchester County Health Care Corporation"
+          }
+        }
+      ]
+    },
+    {
+      "provider_group_id": 180,
+      "network_name": [],
+      "provider_groups": [
+        {
+          "npi": [
+            1679587679
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-2655001",
+            "business_name": "Jacobi Medical Center NYC"
+          }
+        }
+      ]
+    },
+    {
+      "provider_group_id": 255,
+      "network_name": [],
+      "provider_groups": [
+        {
+          "npi": [
+            1891745758
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "16-0776186",
+            "business_name": "Buffalo Hearing & Speech Center, Inc."
+          }
+        }
+      ]
+    },
+    {
+      "provider_group_id": 876,
+      "network_name": [],
+      "provider_groups": [
+        {
+          "npi": [
+            1649035338,
+            1790337590,
+            1245794627,
+            1356884324,
+            1174999437,
+            1134465370,
+            1649865106,
+            1811627516,
+            1740955459,
+            1619540291,
+            1528454998,
+            1770904641,
+            1386467884,
+            1942992730,
+            1780131136,
+            1881102275,
+            1912445792,
+            1518513308,
+            1992561252,
+            1306318399,
+            1215536727,
+            1407285893,
+            1396424529,
+            1790247518,
+            1952817736,
+            1013230218,
+            1386319952,
+            1184068066,
+            1538818125,
+            1871218495,
+            1962708032,
+            1487093407
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "86-1058656",
+            "business_name": "Aldad Medical PC"
+          }
+        }
+      ]
+    },
+    {
+      "provider_group_id": 879,
+      "network_name": [],
+      "provider_groups": [
+        {
+          "npi": [
+            1558865006,
+            1609306216,
+            1396527289,
+            1396289724,
+            1861957276,
+            1447609839,
+            1356031355,
+            1528503794,
+            1043609662,
+            1932679800,
+            1972260164,
+            1457087058,
+            1154949691,
+            1235164179,
+            1295537397,
+            1467506998,
+            1437413853,
+            1629234539,
+            1326655531,
+            1013717495,
+            1710334701,
+            1053080473,
+            1508415670,
+            1255807780
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-1242656",
+            "business_name": "Carmel Psychological Health PC"
+          }
+        }
+      ]
+    },
+    {
+      "provider_group_id": 898,
+      "network_name": [],
+      "provider_groups": [
+        {
+          "npi": [
+            1003484817
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "41-2816649",
+            "business_name": "Ileana Marie LaGrutta dba Ileana LaGrutta LMHC D"
+          }
+        },
+        {
+          "npi": [
+            1376163287,
+            1851044077,
+            1508430182,
+            1518660075
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "86-1492842",
+            "business_name": "Modern Wellness Mental Health Counseling"
+          }
+        },
+        {
+          "npi": [
+            1033587522
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-3051055",
+            "business_name": "Nicole Hutchinson"
+          }
+        },
+        {
+          "npi": [
+            1992076525,
+            1578936266
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-4998495",
+            "business_name": "Broadhollow Psychotherapy LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1568064228,
+            1770477929
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "93-4815201",
+            "business_name": "Samantha Dmytrow dba Sunrise Wellness"
+          }
+        },
+        {
+          "npi": [
+            1891951380
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-4842410",
+            "business_name": "Jorge L Niveyro dba Counseling For A New Life"
+          }
+        },
+        {
+          "npi": [
+            1619163672,
+            1174069975,
+            1215262993
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3489344",
+            "business_name": "New York Psychiatric Services, PC"
+          }
+        },
+        {
+          "npi": [
+            1326709908,
+            1477278950,
+            1659134088,
+            1457991051,
+            1043358526,
+            1881239598,
+            1356861199,
+            1790205243,
+            1669139085,
+            1962280263,
+            1538504162,
+            1801658513,
+            1689984809,
+            1124572052,
+            1508532094,
+            1396410734,
+            1669601308,
+            1891475430,
+            1184212649
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "85-2097914",
+            "business_name": "Brave Medical PC"
+          }
+        },
+        {
+          "npi": [
+            1902778475,
+            1730833195,
+            1649700956,
+            1275082760,
+            1821775388,
+            1255040069,
+            1659028207,
+            1871381913,
+            1386315059,
+            1477204766,
+            1952008138,
+            1740833367,
+            1760081277,
+            1225887110,
+            1457932287,
+            1548858319,
+            1598227548,
+            1396610465,
+            1467795294,
+            1750975355,
+            1215658323,
+            1043457047,
+            1467992024,
+            1023667243,
+            1235868928,
+            1700623600,
+            1942179437,
+            1447890553,
+            1871273532,
+            1649615972,
+            1336706324,
+            1083910947,
+            1518855998,
+            1376075838,
+            1336614544,
+            1508683475,
+            1023269693,
+            1508611625,
+            1821854035,
+            1316597180,
+            1255177754,
+            1245971464,
+            1740513779,
+            1750052866,
+            1114683299,
+            1487700472,
+            1730538877,
+            1790455392,
+            1093420150,
+            1073266458,
+            1831799501,
+            1427634674,
+            1205313202,
+            1518462183,
+            1366975773,
+            1184221426,
+            1144941527,
+            1952722571,
+            1083310049,
+            1053019190,
+            1659700888,
+            1700327855,
+            1316789381,
+            1346017472,
+            1831741909,
+            1487292249,
+            1760941322
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3254796",
+            "business_name": "CHE Senior Psychological Services, PC"
+          }
+        },
+        {
+          "npi": [
+            1437627510
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "33-2158056",
+            "business_name": "A Path for You Mental Health Counseling PC"
+          }
+        },
+        {
+          "npi": [
+            1720805831
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-5041589",
+            "business_name": "Deborah L Murphy LMHC"
+          }
+        },
+        {
+          "npi": [
+            1518508480,
+            1366156366,
+            1346015609,
+            1295516540,
+            1891664389,
+            1326435785,
+            1851702393,
+            1326709908,
+            1588445829,
+            1982479234,
+            1609629914,
+            1174141527,
+            1114734845,
+            1255222014,
+            1245011584,
+            1023984382,
+            1477334712,
+            1376901926,
+            1356122691,
+            1033987961,
+            1023650686
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-4385745",
+            "business_name": "Nassau Psychology, PC"
+          }
+        },
+        {
+          "npi": [
+            1689915803
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "85-2987508",
+            "business_name": "Natalie Ruvola dba Natalie Ruvola LMHC"
+          }
+        },
+        {
+          "npi": [
+            1144975046
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-4907663",
+            "business_name": "NC Mental Health Counseling PLLLC"
+          }
+        },
+        {
+          "npi": [
+            1861827800,
+            1659022804,
+            1225887110,
+            1164675724,
+            1619683844
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "87-1011627",
+            "business_name": "Invest In You Mental Health Counseling PC"
+          }
+        },
+        {
+          "npi": [
+            1780459529
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "39-3840383",
+            "business_name": "Mind Body Soul Marriage and Family"
+          }
+        },
+        {
+          "npi": [
+            1932803285
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-7786351",
+            "business_name": "Shakira Williams"
+          }
+        },
+        {
+          "npi": [
+            1689294993
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "87-1523748",
+            "business_name": "In Motion Mental Health Counseling, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1306137245
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-9483581",
+            "business_name": "Linda Mandel Kleinman"
+          }
+        },
+        {
+          "npi": [
+            1174069975
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-7963425",
+            "business_name": "Khrystyna Misyuk"
+          }
+        },
+        {
+          "npi": [
+            1093207516
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-4748902",
+            "business_name": "Mario Arrendell"
+          }
+        },
+        {
+          "npi": [
+            1912359381
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-3017916",
+            "business_name": "Rachel Hartman dba Cosmos Counseling LLP"
+          }
+        },
+        {
+          "npi": [
+            1487030292
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "88-2209853",
+            "business_name": "Synergy Mental Health Counseling"
+          }
+        },
+        {
+          "npi": [
+            1770358657
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "93-4065020",
+            "business_name": "Sound Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1386498764
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-2675429",
+            "business_name": "New York Medical Behavioral Health Services PC"
+          }
+        },
+        {
+          "npi": [
+            1245802487
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "41-4184048",
+            "business_name": "Cassandra A Leone dba Cassandra A Leone Licensed Mental"
+          }
+        },
+        {
+          "npi": [
+            1184220105
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-4226410",
+            "business_name": "Higher Mindz Consulting LLC"
+          }
+        },
+        {
+          "npi": [
+            1437627510,
+            1518094986
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-5655382",
+            "business_name": "Dbs You and Co Inc"
+          }
+        },
+        {
+          "npi": [
+            1265948640
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-9768756",
+            "business_name": "Linsey A Wrobel LMHC"
+          }
+        },
+        {
+          "npi": [
+            1548779697
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "39-4831353",
+            "business_name": "Alexandra Andrade Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1386269090,
+            1457006330,
+            1295017861,
+            1609540707
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-1363990",
+            "business_name": "LI Health Services LCSW PLLC dba Ellie Mental Health"
+          }
+        },
+        {
+          "npi": [
+            1821134578
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3365682",
+            "business_name": "Family Care Counselign Services LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1184075699,
+            1558057224,
+            1497441000,
+            1679918874
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-5417095",
+            "business_name": "Balance Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1417429671
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-1959665",
+            "business_name": "Open Door Mental Health Counseling PC"
+          }
+        },
+        {
+          "npi": [
+            1336510833
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-4353103",
+            "business_name": "Treehouse Wisdom and Wellness Inc"
+          }
+        },
+        {
+          "npi": [
+            1831569888
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-4502256",
+            "business_name": "Centered Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1932579497
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-0801700",
+            "business_name": " Susan McPartland LMHC"
+          }
+        },
+        {
+          "npi": [
+            1992526206
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "33-2621344",
+            "business_name": "Ashwood Mental Health Counseling PC"
+          }
+        },
+        {
+          "npi": [
+            1336800911
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "78-6383387",
+            "business_name": "Varsha Pahwa Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1376026260
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-2648330",
+            "business_name": "Alla Leybinsky dba Al Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1073289740
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3646695",
+            "business_name": "Cody Pickrodt"
+          }
+        },
+        {
+          "npi": [
+            1114137643,
+            1477326882
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-2521669",
+            "business_name": "Lori Miller Licensed Mental Health Counselor P.C."
+          }
+        },
+        {
+          "npi": [
+            1467880807
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-4030056",
+            "business_name": "Eleonora Yerukhimovich Mental Health Counselor PC"
+          }
+        },
+        {
+          "npi": [
+            1780074542,
+            1063810786,
+            1720436199
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-1286002",
+            "business_name": "South Bay Counseling LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1780074542
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "87-2245475",
+            "business_name": "SK Mental Health Counseling Services PLLC"
+          }
+        },
+        {
+          "npi": [
+            1235822115
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "33-1556311",
+            "business_name": "Oneal Marriage And Family Therapy PLLC"
+          }
+        },
+        {
+          "npi": [
+            1316397367
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-2910099",
+            "business_name": "Jeremiah M Corbo"
+          }
+        },
+        {
+          "npi": [
+            1336503671
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-2270073",
+            "business_name": "Ally Mental Health Counseling Services, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1730743212,
+            1366266728,
+            1639853302,
+            1487166443,
+            1366298879,
+            1861191231,
+            1548823107,
+            1144969643,
+            1396448171,
+            1477119196,
+            1124581657,
+            1316531098,
+            1194544528,
+            1871901942,
+            1942948393,
+            1891318812,
+            1609421445,
+            1093454464,
+            1508678236,
+            1235457490,
+            1477224061,
+            1235547415,
+            1003571878,
+            1841914231,
+            1538787783
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-1033023",
+            "business_name": "Ms Kristen Elizabeth Herbert-Delaney LMHC"
+          }
+        },
+        {
+          "npi": [
+            1730820523,
+            1457185241,
+            1598452815,
+            1124846720,
+            1740950344,
+            1851001051,
+            1265151864,
+            1447484886,
+            1811586795,
+            1083117725,
+            1548640733,
+            1588088124,
+            1306914163,
+            1215506159,
+            1356236491,
+            1598227548,
+            1275244196,
+            1528317104,
+            1295560969,
+            1700415593,
+            1609434968,
+            1104316132,
+            1669804605,
+            1174941363,
+            1639945090,
+            1245633791,
+            1821876053,
+            1669191359,
+            1689019119,
+            1629479514,
+            1689379703,
+            1417507252,
+            1275279945,
+            1801358866,
+            1164166450,
+            1730742651,
+            1568974673,
+            1427900869,
+            1043898083,
+            1235149121,
+            1457113094,
+            1881751030,
+            1407432636,
+            1427634674,
+            1205420734,
+            1093282253,
+            1174206742,
+            1598017485,
+            1093518425,
+            1689123796,
+            1487006045,
+            1730871252
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-4617245",
+            "business_name": "Comprehensive Counseling, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1689915803,
+            1972179406,
+            1013521889,
+            1881189355,
+            1477340453,
+            1518754506,
+            1437947355,
+            1366209249,
+            1568064228,
+            1982329876,
+            1285342857,
+            1770150559,
+            1790543015,
+            1386328094
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-4292228",
+            "business_name": "365 Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1942772322
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-3389196",
+            "business_name": "Justine Astacio DBA Lotus Theory LLC"
+          }
+        },
+        {
+          "npi": [
+            1023639234,
+            1689388571
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-3294564",
+            "business_name": "Phoenix Health Therapy LLC"
+          }
+        },
+        {
+          "npi": [
+            1144676974
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "93-3689639",
+            "business_name": "MJM Wellness LLC"
+          }
+        },
+        {
+          "npi": [
+            1720476328
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "87-1726730",
+            "business_name": "Ricardo Rene Gonzalez Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1114384765,
+            1093513103,
+            1891318952,
+            1164788964,
+            1497369722,
+            1093253429,
+            1366000838
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-3279262",
+            "business_name": "Blue Skies Psychological Services PC"
+          }
+        },
+        {
+          "npi": [
+            1235347931
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-4944320",
+            "business_name": "Gabriela Weinberg-Gitlin, LMHC"
+          }
+        },
+        {
+          "npi": [
+            1841538121
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-4426632",
+            "business_name": "Rachel Claire Siehs, LMHC, NCC"
+          }
+        },
+        {
+          "npi": [
+            1235400599
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-4297928",
+            "business_name": "Shaun Dieterich"
+          }
+        },
+        {
+          "npi": [
+            1083795983,
+            1952052342
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "86-3166824",
+            "business_name": "Brain Health USA Inc"
+          }
+        },
+        {
+          "npi": [
+            1851953939,
+            1336766286,
+            1750171013,
+            1104486448,
+            1124482963,
+            1366083867,
+            1063271914,
+            1801216817,
+            1497280416
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-4334258",
+            "business_name": "Blossoming Cherry Mental Health Counseling Services PC"
+          }
+        },
+        {
+          "npi": [
+            1497253389
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-2128339",
+            "business_name": "Laura Mazzaferro Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1508352592
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "88-0710627",
+            "business_name": "Carving Futures Inc dba Pariva Health"
+          }
+        },
+        {
+          "npi": [
+            1891163804
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-3600398",
+            "business_name": "Dr Jonathan Procter PhD"
+          }
+        },
+        {
+          "npi": [
+            1346607140
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-5172191",
+            "business_name": "Rosa Ruvio, LMHC"
+          }
+        },
+        {
+          "npi": [
+            1780459529
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "33-3323868",
+            "business_name": "Cornerstone Health Partners LLC"
+          }
+        },
+        {
+          "npi": [
+            1679229108,
+            1649960923,
+            1760884183,
+            1851761563,
+            1861658353,
+            1861008773,
+            1265101646,
+            1073136735,
+            1811536469,
+            1700200441,
+            1689236192,
+            1467835884,
+            1649641408,
+            1861765570,
+            1245870716,
+            1689283566
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "26-0302415",
+            "business_name": "Canino LCSW Psychotherapy PC"
+          }
+        },
+        {
+          "npi": [
+            1417301516
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-4721982",
+            "business_name": "Daniel Badillo dba Polaris Mental Health Counseling"
+          }
+        },
+        {
+          "npi": [
+            1972058014
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "87-2816305",
+            "business_name": "Brooke Williams Mental Health Counseling PC"
+          }
+        },
+        {
+          "npi": [
+            1912598798
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-2801979",
+            "business_name": "Rachel Lederman dba Sincerely Me Mental"
+          }
+        },
+        {
+          "npi": [
+            1932447927
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-3286324",
+            "business_name": "Enlightenment Mental Health Counseling, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1063810786
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-3743022",
+            "business_name": "John Bruno"
+          }
+        },
+        {
+          "npi": [
+            1295397289
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-1806706",
+            "business_name": "Darcy Barillas"
+          }
+        },
+        {
+          "npi": [
+            1699041178
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-5240305",
+            "business_name": "CJM Counseling Licenses Clinical Social Workers PC"
+          }
+        },
+        {
+          "npi": [
+            1598492951,
+            1932713427,
+            1023451028,
+            1497538086,
+            1811496383,
+            1386498764,
+            1003495979,
+            1124765334,
+            1518619865,
+            1952009524
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-2961674",
+            "business_name": "Life in Progress Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1902682776
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "33-4083422",
+            "business_name": "Couples Compass"
+          }
+        },
+        {
+          "npi": [
+            1184008468
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-4088715",
+            "business_name": "Here to There Counseling Services LLC"
+          }
+        },
+        {
+          "npi": [
+            1568173318
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-3175662",
+            "business_name": "Honeycomb Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1649823899
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "39-2617157",
+            "business_name": "C&T Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1508409087
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "86-1185841",
+            "business_name": "Dynamic Counseling LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1164720652
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "92-2202393",
+            "business_name": "Multimodal Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1811637499
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-2853285",
+            "business_name": "Resilient Mind Licensed Clinical Social Work Services"
+          }
+        },
+        {
+          "npi": [
+            1508076068
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "20-4568350",
+            "business_name": "Gail L Moore"
+          }
+        },
+        {
+          "npi": [
+            1003575010
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "33-4115648",
+            "business_name": "Tidewater Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1518553361
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-4982645",
+            "business_name": "Refresh Psychotherapy LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1760348650,
+            1639643505,
+            1982223723,
+            1073951885,
+            1679969901,
+            1487237301,
+            1992076525,
+            1033772041,
+            1477119196,
+            1205654852,
+            1427368331,
+            1790543015,
+            1285520767,
+            1821293614,
+            1629424957,
+            1396479135,
+            1053902965,
+            1811569759,
+            1346607140,
+            1285168880,
+            1487293387,
+            1215405980,
+            1417372244,
+            1629422639,
+            1912542606,
+            1629613781,
+            1043656457,
+            1194280594,
+            1750845285
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3531584",
+            "business_name": "Sunrise Counseling Center"
+          }
+        },
+        {
+          "npi": [
+            1093414310
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "39-2532289",
+            "business_name": "Sakoon Space Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1417306119
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "88-2386508",
+            "business_name": "Samantha Wiener"
+          }
+        },
+        {
+          "npi": [
+            1639686587,
+            1578853016,
+            1477332872,
+            1295120954,
+            1669153904,
+            1265090153,
+            1508351081,
+            1538697636,
+            1467935338,
+            1366096505,
+            1881322295,
+            1790336428,
+            1235728056,
+            1376223768,
+            1235870221,
+            1417638107,
+            1467153346,
+            1588366744,
+            1053037168,
+            1003334517,
+            1518539451,
+            1407397599,
+            1699408245,
+            1184275927,
+            1336896877,
+            1376130880,
+            1831569888,
+            1851854509,
+            1861113763,
+            1609187236,
+            1306211339,
+            1295009504,
+            1881309425,
+            1447755038,
+            1083905871,
+            1497415194,
+            1740737436,
+            1164043071,
+            1326641010,
+            1588345292,
+            1629629381,
+            1447933098,
+            1962161182,
+            1073293460,
+            1275998817,
+            1235885658,
+            1649962408,
+            1235792987,
+            1588360283,
+            1841971249,
+            1427570795,
+            1023697786
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-2356985",
+            "business_name": "Rothschild Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1396319620
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-3093973",
+            "business_name": "Clear View Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1841671724
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-4306469",
+            "business_name": "Jacqueline Lomando JML Mental Health Counselor, PC"
+          }
+        }
+      ]
+    },
+    {
+      "provider_group_id": 912,
+      "network_name": [],
+      "provider_groups": [
+        {
+          "npi": [
+            1902847668
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-8544023",
+            "business_name": "Sara P Berkowitz LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1992032593
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-2701301",
+            "business_name": "Michelle Wilsusen"
+          }
+        },
+        {
+          "npi": [
+            1598249542,
+            1497156939,
+            1881717668
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-3187214",
+            "business_name": "Rudoy Medical PC"
+          }
+        },
+        {
+          "npi": [
+            1417010018
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "26-0628913",
+            "business_name": "Brookhaven Physician Services, P.C."
+          }
+        },
+        {
+          "npi": [
+            1316006018
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-4088645",
+            "business_name": "Mr. Stephen Kohn MSW"
+          }
+        },
+        {
+          "npi": [
+            1457371783
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-4211065",
+            "business_name": "IV Licensed Clinical Social Work, PC"
+          }
+        },
+        {
+          "npi": [
+            1710998323
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-9549878",
+            "business_name": "Sherry Persky, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1356498711
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3618249",
+            "business_name": "Sage Hill Counseling Psychotherapy, Social Work, LCSW,"
+          }
+        },
+        {
+          "npi": [
+            1376719468,
+            1467197574,
+            1093298143,
+            1235152067
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3254796",
+            "business_name": "CHE Senior Psychological Services, PC"
+          }
+        },
+        {
+          "npi": [
+            1558392712
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "20-5570069",
+            "business_name": "Dina Stepcare LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1265762058
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-7668659",
+            "business_name": "Amira R Crawford"
+          }
+        },
+        {
+          "npi": [
+            1922025477
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3603660",
+            "business_name": "ALMA Counseling Inc."
+          }
+        },
+        {
+          "npi": [
+            1770590291
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-3091313",
+            "business_name": "Maria J Hensley-Spera"
+          }
+        },
+        {
+          "npi": [
+            1518113265
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-7506298",
+            "business_name": "Steven Perline LCSW"
+          }
+        },
+        {
+          "npi": [
+            1063511764
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-3427908",
+            "business_name": "Maura B Quealy"
+          }
+        },
+        {
+          "npi": [
+            1679621148,
+            1225070725,
+            1619135746,
+            1962416248,
+            0,
+            1164586475,
+            1144476854,
+            1356550750,
+            1750438867,
+            1952468456,
+            1275753345,
+            1598937948,
+            1710042361,
+            1629120654,
+            1770640542,
+            1326205717,
+            1164562419,
+            1447308127,
+            1295942050,
+            1033305354,
+            1023205986,
+            1902061690,
+            1073541595,
+            1962676437,
+            1255597159,
+            1427113380,
+            1285760355,
+            1568778561,
+            1407013535,
+            1306097050,
+            1811223100,
+            1164679585,
+            1356408850,
+            1013164078,
+            1720235591,
+            1841466257,
+            1427129667,
+            1235393265,
+            1992956569,
+            1750553988,
+            1407917503,
+            1053423772,
+            1902955578,
+            1326293077,
+            1053636373,
+            1174770143,
+            1669628376,
+            1275505752,
+            1851588669,
+            1346460706,
+            1881810893,
+            1295844181,
+            1851621429,
+            1841318185,
+            1366599326,
+            1316167836,
+            1750324646,
+            1629234539,
+            1801906078,
+            1417165572,
+            1497912885,
+            1689883332
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-1740035",
+            "business_name": "St Vincents Hospital & Medical Center-Westchester"
+          }
+        },
+        {
+          "npi": [
+            1063513935
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-4931033",
+            "business_name": "Contemporary Psychotherapy LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1215373998
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-3922992",
+            "business_name": "Jennifer Melnick DBA Jennifer Melnick LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1205084142
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-6527697",
+            "business_name": "Issac Cohen , CSW"
+          }
+        },
+        {
+          "npi": [
+            1396819868
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "56-2469724",
+            "business_name": "LCSW Psychotherapy PC"
+          }
+        },
+        {
+          "npi": [
+            1811352974,
+            1093960346
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-2968271",
+            "business_name": "R & V NP In Psychiatric Services PLLC"
+          }
+        },
+        {
+          "npi": [
+            1710090949
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-7509679",
+            "business_name": "Chaim Biberfeld, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1376699009
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "14-1779212",
+            "business_name": "Barbara A Deutsch dba New Directions"
+          }
+        },
+        {
+          "npi": [
+            1841732278,
+            1124422589,
+            1154799401,
+            1710533146,
+            1124987250
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3818122",
+            "business_name": "Housing Works Services II, Inc."
+          }
+        },
+        {
+          "npi": [
+            1871819060,
+            1184846818
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-1364191",
+            "business_name": "Butterfly LCSW, PC"
+          }
+        },
+        {
+          "npi": [
+            1447404033
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-3952953",
+            "business_name": "Emily F Chappell"
+          }
+        },
+        {
+          "npi": [
+            1164519153
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "34-2041206",
+            "business_name": "Deborah L Singer DBA Deborah L. Singer LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1881754976
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-4521597",
+            "business_name": "Jennifer Hili, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1982815429
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-1080488",
+            "business_name": "Maura Grillo, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1982880910
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-1655776",
+            "business_name": "Theresa Aquilina LMSW"
+          }
+        },
+        {
+          "npi": [
+            1366580516
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-4382337",
+            "business_name": "Martin Koser LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1578821112
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-1773419",
+            "business_name": "Family Services of Westchester, Inc."
+          }
+        },
+        {
+          "npi": [
+            1528364650
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-7602410",
+            "business_name": "Marcia Chichester"
+          }
+        },
+        {
+          "npi": [
+            1942471677
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-4783271",
+            "business_name": "True Pursuit Psychological Services, PC"
+          }
+        },
+        {
+          "npi": [
+            1609839893
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "20-4098006",
+            "business_name": "Karin Keyes, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1194987958
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-1135026",
+            "business_name": "Rosemary Sanchez-Moralez"
+          }
+        },
+        {
+          "npi": [
+            1134213176
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-8344466",
+            "business_name": "Ellen A Klaffky"
+          }
+        },
+        {
+          "npi": [
+            1780796052
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-1483753",
+            "business_name": "Thomas P Beck, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1811256613
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-4919608",
+            "business_name": "Aguirre Psychotherapy Mental Health Counseling, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1225134612
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-1930700",
+            "business_name": "Riverdale Mental Health Associates"
+          }
+        },
+        {
+          "npi": [
+            1295725547
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-0744322",
+            "business_name": "Semyon Barash, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1992967277
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "87-0985912",
+            "business_name": "Comprehensive Therapeutic Services"
+          }
+        },
+        {
+          "npi": [
+            1215928395,
+            1689090763,
+            1801033022,
+            1396331229,
+            1407031776
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-5133592",
+            "business_name": "Jennifer Ufko LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1457373839
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-2404217",
+            "business_name": "Amy W Bernstein LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1831401587
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "86-1250891",
+            "business_name": "Indigo Dove LCSW Therapy Wellness PC"
+          }
+        },
+        {
+          "npi": [
+            1598903593,
+            1528543485,
+            1083838189,
+            1962622704
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "61-1699622",
+            "business_name": "The Therapy Zone, Licensed Clinical Social Work Service"
+          }
+        },
+        {
+          "npi": [
+            1194987495
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-4643269",
+            "business_name": "Garden City Therapy LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1811099393,
+            1013065440,
+            1871804070
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3207304",
+            "business_name": "Heartland Psychological Services, PC"
+          }
+        },
+        {
+          "npi": [
+            1225336290,
+            1457841736
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-2592214",
+            "business_name": "Hispanic Counseling Center, Inc."
+          }
+        },
+        {
+          "npi": [
+            1336437318
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "90-0770460",
+            "business_name": "Family and Community Multiservice Agency Inc"
+          }
+        },
+        {
+          "npi": [
+            1902118193
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "14-8384775",
+            "business_name": "Etta Ansel, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1710149679,
+            1255096988,
+            1518361955,
+            1235747916,
+            1881964740,
+            1962726372,
+            1336721828,
+            1679052575
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "85-0535662",
+            "business_name": "Mead Counseling LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1396838033
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-3384317",
+            "business_name": "Alan Frederick Steinke"
+          }
+        },
+        {
+          "npi": [
+            1558482497
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "36-4873066",
+            "business_name": "CS Medical Associates P.C. dba Victory Recovery Partner"
+          }
+        },
+        {
+          "npi": [
+            1922434596
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-2542430",
+            "business_name": "WellLife Network Inc"
+          }
+        },
+        {
+          "npi": [
+            1215063789,
+            1891850897,
+            1932443959
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3698967",
+            "business_name": "RDC Center for Counseling and Human Development, Inc."
+          }
+        },
+        {
+          "npi": [
+            1770652596
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-9327855",
+            "business_name": "Diana J Jacobson, MSW"
+          }
+        },
+        {
+          "npi": [
+            1316123243
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-1071966",
+            "business_name": "Veronica Hemmings LCSW"
+          }
+        },
+        {
+          "npi": [
+            1871604264
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "56-2610103",
+            "business_name": "Janet Marie Navas, LCSW, PC"
+          }
+        },
+        {
+          "npi": [
+            1063748424
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-4837081",
+            "business_name": "Marialeen Martorella DBA"
+          }
+        },
+        {
+          "npi": [
+            1932129681
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3482006",
+            "business_name": "Steve Roithmayr, CSW"
+          }
+        },
+        {
+          "npi": [
+            1629301783
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-4711243",
+            "business_name": "Cherie Y Dortch LCSW LLC"
+          }
+        },
+        {
+          "npi": [
+            1508922063
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-8466614",
+            "business_name": "Youth and Family Counseling Services"
+          }
+        },
+        {
+          "npi": [
+            1912022013
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-1588332",
+            "business_name": "Christopher Halucha LCSW R"
+          }
+        },
+        {
+          "npi": [
+            1942622758,
+            1215976790
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-3926705",
+            "business_name": "Integrated Counseling, LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1952577272
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-1461511",
+            "business_name": "Michele Degati Vincent, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1366650467
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-1950427",
+            "business_name": "Eastern Suffolk Counseling, LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1023353364
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-1441736",
+            "business_name": "Lilia Urias"
+          }
+        },
+        {
+          "npi": [
+            1518102490
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-4494211",
+            "business_name": "Jacqueline M Lefkowitz"
+          }
+        },
+        {
+          "npi": [
+            1457827974,
+            1881249829,
+            1538683347,
+            1427688415,
+            1053678565,
+            1285319319,
+            1225603905,
+            1639527476,
+            1861069817,
+            1316502818,
+            1538798533,
+            1053711507,
+            1467979682
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-4982645",
+            "business_name": "Refresh Psychotherapy LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1023366580,
+            1932442563
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "20-3905215",
+            "business_name": "Babok Medical Health Services"
+          }
+        },
+        {
+          "npi": [
+            1396072518,
+            1700558251,
+            1396315842,
+            1215646575,
+            1578738050,
+            1033937628,
+            1427146703
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-4074478",
+            "business_name": "Union Community Health Center Inc"
+          }
+        },
+        {
+          "npi": [
+            1639219249
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-3346453",
+            "business_name": "Patricia Newmark-Carren"
+          }
+        },
+        {
+          "npi": [
+            1811089329
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-1469487",
+            "business_name": "Joseph Cowley LCSW R"
+          }
+        },
+        {
+          "npi": [
+            1225127103
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-2804701",
+            "business_name": "Emma Dorfman LCSW"
+          }
+        },
+        {
+          "npi": [
+            1609923903
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-5104888",
+            "business_name": "Dori Kaplan LMHC"
+          }
+        },
+        {
+          "npi": [
+            1649309360
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "14-1870579",
+            "business_name": "Marlene Josue dba Zanines Clinical and Support Services"
+          }
+        },
+        {
+          "npi": [
+            1760637359
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-2464477",
+            "business_name": "Ann D McCarthy"
+          }
+        },
+        {
+          "npi": [
+            1114934478
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-5366349",
+            "business_name": "Michael S Burns LCSW"
+          }
+        },
+        {
+          "npi": [
+            1558809640,
+            1871045047,
+            1215381447
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-1372307",
+            "business_name": "New Hope Rising Inc."
+          }
+        },
+        {
+          "npi": [
+            1760569081
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "26-0697972",
+            "business_name": "Bonnie Levin"
+          }
+        },
+        {
+          "npi": [
+            1477619419
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-9563454",
+            "business_name": "Celina Reyes-Levine"
+          }
+        },
+        {
+          "npi": [
+            1568998573
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "87-4624406",
+            "business_name": "Shiny Triangle LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1578634622,
+            1861647919
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "54-8257361",
+            "business_name": "Marla Renzoni, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1114065190
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-2665583",
+            "business_name": "Sheriffa Gallwey, MSW"
+          }
+        },
+        {
+          "npi": [
+            1518040096
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-2638823",
+            "business_name": "Micheale M Payne MSW"
+          }
+        },
+        {
+          "npi": [
+            1669651295
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-7469920",
+            "business_name": "Anna Lorusso-Moramarco, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1710176078
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-4174553",
+            "business_name": "Four Bridges Social Work Services LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1811978943
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-4540600",
+            "business_name": "Mary Calamia, LCSW, CASAC"
+          }
+        },
+        {
+          "npi": [
+            1750452124
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-6347372",
+            "business_name": "Dolores Riordan LCSW"
+          }
+        },
+        {
+          "npi": [
+            1073717765,
+            1669937397
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "20-3167041",
+            "business_name": "B & L Cognitive Behavioral Psychology"
+          }
+        },
+        {
+          "npi": [
+            1598520926,
+            1326687245,
+            1982148250
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-2663328",
+            "business_name": "Puerto Rican Organization to Motivate Enlighten and"
+          }
+        },
+        {
+          "npi": [
+            1275566499
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-9626557",
+            "business_name": "Michael Zampella"
+          }
+        },
+        {
+          "npi": [
+            1760621395
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-1161009",
+            "business_name": "Wayne M Gurnick MS, LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1134217508
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-2995873",
+            "business_name": "Marie Beauregard Weiss LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1093955569
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-2545305",
+            "business_name": "Susan Schmid"
+          }
+        },
+        {
+          "npi": [
+            1386761179
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-0938454",
+            "business_name": "Michael Dean Ash SR LCSWR"
+          }
+        },
+        {
+          "npi": [
+            1043323728
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "33-1008607",
+            "business_name": "Harbor Crest Comprehensive Counseling, PC"
+          }
+        },
+        {
+          "npi": [
+            1487972584
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-5440477",
+            "business_name": "Hali Greenberg"
+          }
+        },
+        {
+          "npi": [
+            1790871945
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-2766329",
+            "business_name": "Eugenia S Rozenberg LCSW"
+          }
+        },
+        {
+          "npi": [
+            1093740508
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "20-5119094",
+            "business_name": "Yelena Shik Psychotherapy Practice"
+          }
+        },
+        {
+          "npi": [
+            1386767432,
+            1053576942,
+            1194114926,
+            1255893624,
+            1023307485,
+            1184265043,
+            1831403948,
+            1477393288,
+            1932647740,
+            1770225740,
+            1104380476,
+            1174165971,
+            1932626017,
+            1548857857,
+            1841798519,
+            1942602776,
+            1629492145,
+            1295818185,
+            1407031776
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-4819915",
+            "business_name": "Supportive Care Psychology of NY PC"
+          }
+        },
+        {
+          "npi": [
+            1649458548
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-4887442",
+            "business_name": "Debra Gruda LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1861428237
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-5578080",
+            "business_name": "Silvia Farkas LCSW"
+          }
+        },
+        {
+          "npi": [
+            1154462877
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-3448630",
+            "business_name": "Mitchell J. Slochower MSW, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1457110744,
+            1265112973,
+            1699104943,
+            1225336290,
+            1528358504,
+            1306508783,
+            1164667259,
+            1255948238,
+            1346354123,
+            1730888637,
+            1366757163,
+            1770046781,
+            1235319807
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-0216316",
+            "business_name": "Harmony Health Care Long Island"
+          }
+        },
+        {
+          "npi": [
+            1669489456
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-2445928",
+            "business_name": "Yolanda Carrion LCSW"
+          }
+        },
+        {
+          "npi": [
+            1891859765
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-9524240",
+            "business_name": "Jeanine Marie Fischer LCSW"
+          }
+        },
+        {
+          "npi": [
+            1174768204
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-3539906",
+            "business_name": "Elizabeth Plate, LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1164440004
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-1203133",
+            "business_name": "Professional Counseling Services, LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1477043305,
+            1487158077,
+            1700398419,
+            1255870945,
+            1932699485
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-4687807",
+            "business_name": "Essential Counseling Wellness LCSW"
+          }
+        },
+        {
+          "npi": [
+            1457402778
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-3784286",
+            "business_name": "Gila Calev"
+          }
+        },
+        {
+          "npi": [
+            1013331081
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "43-2109150",
+            "business_name": "Stephen W Buckley, PhD"
+          }
+        },
+        {
+          "npi": [
+            1578611372
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "03-0401021",
+            "business_name": "James Morse LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1033276001
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-0241738",
+            "business_name": "Drena Fagen dba New York Creative Arts"
+          }
+        },
+        {
+          "npi": [
+            1093070872
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-5446505",
+            "business_name": "Mindful Therapy Solutions LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1588604292
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-9648732",
+            "business_name": "Deirdre J. Holland"
+          }
+        },
+        {
+          "npi": [
+            1609918051
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "04-3602489",
+            "business_name": "Elaine Maye D/B/A Goal Focus Psychotherapy Services,"
+          }
+        },
+        {
+          "npi": [
+            1013334077
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "29-0543799",
+            "business_name": "Chava Abramovitz, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1881045623
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3271544",
+            "business_name": "Maximum Potential Occupational Therapy PC"
+          }
+        },
+        {
+          "npi": [
+            1558452458
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-7347369",
+            "business_name": "Sydelle Malofsky LCSW"
+          }
+        },
+        {
+          "npi": [
+            1982708616
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-5544392",
+            "business_name": "Anthony Mazzella"
+          }
+        },
+        {
+          "npi": [
+            1184892101
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-4734593",
+            "business_name": "Kara B Scheinin Holisher LCSW-R PC"
+          }
+        },
+        {
+          "npi": [
+            1467614453
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-8606410",
+            "business_name": "Clara I Rodriguez"
+          }
+        },
+        {
+          "npi": [
+            1053526848
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-4409573",
+            "business_name": "Deborah Zeltmann"
+          }
+        },
+        {
+          "npi": [
+            1588725725
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3695024",
+            "business_name": "Comprehensive Pediatrics, PC"
+          }
+        },
+        {
+          "npi": [
+            1093934820
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-2561612",
+            "business_name": "Jennifer Gutstein"
+          }
+        },
+        {
+          "npi": [
+            1508137035
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "92-3752596",
+            "business_name": "Mary Stone LCSW LLC dba Stone Associates"
+          }
+        },
+        {
+          "npi": [
+            1336303320
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-3337905",
+            "business_name": "Linda A Wilk"
+          }
+        },
+        {
+          "npi": [
+            1578872529
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-6402710",
+            "business_name": "Lori B. Sinclair"
+          }
+        },
+        {
+          "npi": [
+            1053073684,
+            1437394319,
+            1992174205,
+            1861159337,
+            1841563871
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "01-3462664",
+            "business_name": "Ilana H. Rosen and Associates"
+          }
+        },
+        {
+          "npi": [
+            1134212806
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-8768932",
+            "business_name": "Ada Tsarnas, RCSW"
+          }
+        },
+        {
+          "npi": [
+            1740595743
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-5521091",
+            "business_name": "Donna L. De Tura"
+          }
+        },
+        {
+          "npi": [
+            1255092078,
+            1306574801,
+            1093136228,
+            1356455117,
+            1821648528,
+            1629817697,
+            1184201634,
+            1447866272
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-1356602",
+            "business_name": "Priyadarshan Bajpayi MD PC"
+          }
+        },
+        {
+          "npi": [
+            1609192897
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-0605839",
+            "business_name": "Julie A Fabio LCSW"
+          }
+        },
+        {
+          "npi": [
+            1982769428
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-4646122",
+            "business_name": "Claire Weinberg, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1457753568
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-2982792",
+            "business_name": "Park Slope Center for Mental Health"
+          }
+        },
+        {
+          "npi": [
+            1881806883
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-3546960",
+            "business_name": "Merrie Bartlett"
+          }
+        },
+        {
+          "npi": [
+            1588788640
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-3682873",
+            "business_name": "Mary Taveras-Garcia , MSW"
+          }
+        },
+        {
+          "npi": [
+            1134434707
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "20-2919410",
+            "business_name": "Cheryl Kalter-Schloss, LCSW, PC"
+          }
+        },
+        {
+          "npi": [
+            1578821112
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-4645750",
+            "business_name": "Kausar P Alvi"
+          }
+        },
+        {
+          "npi": [
+            1881622926
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-5507106",
+            "business_name": "Marianna Avarali"
+          }
+        },
+        {
+          "npi": [
+            1679748875
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3534690",
+            "business_name": "LICH Psychiatric Associates"
+          }
+        },
+        {
+          "npi": [
+            1437207982
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-2583230",
+            "business_name": "Alisa Woods, MSW"
+          }
+        },
+        {
+          "npi": [
+            1639151822
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-5404835",
+            "business_name": "Joanne Milito"
+          }
+        },
+        {
+          "npi": [
+            1053715896,
+            1659897478,
+            1508476912
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "85-1148713",
+            "business_name": "Soul Discovery Mental Health Counseling PC"
+          }
+        },
+        {
+          "npi": [
+            1225168966
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-9560693",
+            "business_name": "Maryann Ciccarelli LCSW"
+          }
+        },
+        {
+          "npi": [
+            1083825186
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-9521264",
+            "business_name": "Rebecca Perez LCSW"
+          }
+        },
+        {
+          "npi": [
+            1952872434,
+            1619367554,
+            1730789637
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "22-3433831",
+            "business_name": "Damian Family Care Centers, Inc"
+          }
+        },
+        {
+          "npi": [
+            1902985724
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-5240741",
+            "business_name": "Jill N Wallace, LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1578642021
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-6602683",
+            "business_name": "Lauren Greenwald, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1073702247
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-4601782",
+            "business_name": "Kathyrn Mertz LCSW"
+          }
+        },
+        {
+          "npi": [
+            1184933194
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-3537980",
+            "business_name": "Jasmine Trangucci"
+          }
+        },
+        {
+          "npi": [
+            1578658688
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-5548609",
+            "business_name": "Anthony Diprima LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1346530680
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-2001396",
+            "business_name": "Jennifer Kelsch Licensed Clinical Socal Worker PC"
+          }
+        },
+        {
+          "npi": [
+            1841440336
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "42-1757282",
+            "business_name": "Sandra Anne Tica MSW, LCSWR"
+          }
+        },
+        {
+          "npi": [
+            1205950169
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-9444569",
+            "business_name": "Mary T Alfinito"
+          }
+        },
+        {
+          "npi": [
+            1366536641,
+            1881958379,
+            1124422589,
+            1205331980
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3826364",
+            "business_name": "Housing Works Health Services III, Inc."
+          }
+        },
+        {
+          "npi": [
+            1225284110
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "41-6316711",
+            "business_name": "Yankau Josephine Wong PhD LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1902947039
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-4619205",
+            "business_name": "Christa Durkin LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1699254888,
+            1083710859
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "22-3943415",
+            "business_name": "Shakhmurov Counseling, Inc."
+          }
+        },
+        {
+          "npi": [
+            1760716682
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "23-7237931",
+            "business_name": "Risewell Community Services Inc dba Risewell"
+          }
+        },
+        {
+          "npi": [
+            1215080684
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-5429553",
+            "business_name": "Cathy A Klein-Scheer"
+          }
+        },
+        {
+          "npi": [
+            1508003302
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-0888526",
+            "business_name": "BRMC Medical, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1144237694
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3493521",
+            "business_name": "Child & Family Psychological Services, PC"
+          }
+        },
+        {
+          "npi": [
+            1821181967
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3340151",
+            "business_name": "Nanette H Yavel, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1184822173
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-4505473",
+            "business_name": "Jill Abramson"
+          }
+        },
+        {
+          "npi": [
+            1093728917
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-4639780",
+            "business_name": "Irina Zeylikman Psychotherapy LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1699198135,
+            1558414581
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-0861956",
+            "business_name": "Mind Matters LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1467647131,
+            1144409285,
+            1518210202,
+            1982078481,
+            1477996817,
+            1063890051,
+            1790229151,
+            1194987958,
+            1295084911
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "58-2681594",
+            "business_name": "Parientes Of Suffolk CSW, PC"
+          }
+        },
+        {
+          "npi": [
+            1023105590
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-8620280",
+            "business_name": "Marybeth Brady LCSWR"
+          }
+        },
+        {
+          "npi": [
+            1134483571
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-6521509",
+            "business_name": "Harry Weingarten, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1154992113,
+            1831480516,
+            1508589029
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "26-3473267",
+            "business_name": "Mind and Wellness Professional Psychiatric Services"
+          }
+        },
+        {
+          "npi": [
+            1689028540,
+            1295920700,
+            1174043970,
+            1366689150,
+            1649429770,
+            1275025124,
+            1366689853,
+            1649341314
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-2707945",
+            "business_name": "BronxCare Dr. Martin Luther King Jr. Health Center"
+          }
+        },
+        {
+          "npi": [
+            1952499121,
+            1952401341,
+            1679669915,
+            1255425971,
+            1134212806,
+            1972571917
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3472828",
+            "business_name": "New Horizon Medical, PC"
+          }
+        },
+        {
+          "npi": [
+            1215950050
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-5248557",
+            "business_name": "James Rusk"
+          }
+        },
+        {
+          "npi": [
+            1316247075
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-5336056",
+            "business_name": "Letapel Inc"
+          }
+        },
+        {
+          "npi": [
+            1437275849
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3440321",
+            "business_name": "Bernadette Curcio"
+          }
+        },
+        {
+          "npi": [
+            1629211313
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-3731611",
+            "business_name": "Kathleen Kane-Coletta LCSW"
+          }
+        },
+        {
+          "npi": [
+            1629635537,
+            1326364084
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-1778525",
+            "business_name": "Psychotherapy at Home, LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1952344822
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3103751",
+            "business_name": "Helen Schwartz CSW PC"
+          }
+        },
+        {
+          "npi": [
+            1861682403
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-4118760",
+            "business_name": "Linda J Smith LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1790337590,
+            1245794627,
+            1649865106,
+            1174999437,
+            1407285893,
+            1538818125,
+            1770904641,
+            1952817736,
+            1518513308
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "86-1058656",
+            "business_name": "Aldad Medical PC"
+          }
+        },
+        {
+          "npi": [
+            1679854152
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-3090903",
+            "business_name": "Jenny C Chim-Wong d/b/a Joy Counseling"
+          }
+        },
+        {
+          "npi": [
+            1629134432
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-9525091",
+            "business_name": "Karen Shaughnessy-Audia MSW"
+          }
+        },
+        {
+          "npi": [
+            1912283706
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-1475876",
+            "business_name": "Gonell Psychotherapy Services LCSW, PC"
+          }
+        },
+        {
+          "npi": [
+            1215971304
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-9647225",
+            "business_name": "Kerry Aprile Hanner"
+          }
+        },
+        {
+          "npi": [
+            1568498848
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-0804901",
+            "business_name": "Idowu Oniyide"
+          }
+        },
+        {
+          "npi": [
+            1689725806
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-2424810",
+            "business_name": "Eileen F Rutter LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1568519759
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-3749924",
+            "business_name": "Lisa A Brandi"
+          }
+        },
+        {
+          "npi": [
+            1760721088
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-4791613",
+            "business_name": "Altagarcia Martinez"
+          }
+        },
+        {
+          "npi": [
+            1659575322,
+            1104031947,
+            1316338403,
+            1235299207
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3315508",
+            "business_name": "Mount Vernon Neighborhood Health Center"
+          }
+        },
+        {
+          "npi": [
+            1578705182
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-2264368",
+            "business_name": "Terence O'Gara LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1871634915
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-2644799",
+            "business_name": "Holly Aleta Shiffman, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1194765099
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "01-0811671",
+            "business_name": "Barry Bachenheimer LCSW PLLC dba New Visions"
+          }
+        },
+        {
+          "npi": [
+            1346286390
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3503082",
+            "business_name": "Josephine Roberto"
+          }
+        },
+        {
+          "npi": [
+            1972637270
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-4938610",
+            "business_name": "Alison Varianides LCSW PC dba Westchester Psychotherapy"
+          }
+        },
+        {
+          "npi": [
+            1255425971
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-0748116",
+            "business_name": "Psychology YME, PC"
+          }
+        },
+        {
+          "npi": [
+            1174533079
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3346027",
+            "business_name": "Carol  Pohrille"
+          }
+        },
+        {
+          "npi": [
+            1235152042
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-6000464",
+            "business_name": "Suffolk County Department of Health Services"
+          }
+        },
+        {
+          "npi": [
+            1669755708
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "87-3398744",
+            "business_name": "Lisani Consulting"
+          }
+        },
+        {
+          "npi": [
+            1912926627
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-1624000",
+            "business_name": "Federation Employment & Guidance Services, Inc."
+          }
+        },
+        {
+          "npi": [
+            1194862201,
+            1093135014,
+            1841684784,
+            1477996817,
+            1780974030
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-4029112",
+            "business_name": "Castle Counseling LCSW"
+          }
+        },
+        {
+          "npi": [
+            1790738094
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-8589537",
+            "business_name": "William Kallenberg"
+          }
+        },
+        {
+          "npi": [
+            1972773273
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-3607758",
+            "business_name": "Ihab Girgis, PhD, LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1326111725
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-1639923",
+            "business_name": "Dennis Piliere, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1962661348
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-0807296",
+            "business_name": "Josephine Ovalles"
+          }
+        },
+        {
+          "npi": [
+            1386605210
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-9546859",
+            "business_name": "Ursula Martin"
+          }
+        },
+        {
+          "npi": [
+            1447932157,
+            1114331410,
+            1669650206,
+            1033087903,
+            1164006060,
+            1568837151,
+            1164217402,
+            1245705680
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-2573451",
+            "business_name": "Rise Life Services"
+          }
+        },
+        {
+          "npi": [
+            1225199649
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-1805481",
+            "business_name": "Barbara Cajdler LCSW"
+          }
+        },
+        {
+          "npi": [
+            1144767443,
+            1134343973
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-4738236",
+            "business_name": "Senior Living Behavioral Health, LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1437178068
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-6347224",
+            "business_name": "Marcie Fischer Oken"
+          }
+        },
+        {
+          "npi": [
+            1275687774
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "20-2182362",
+            "business_name": "Susan Sterngold LCSWR"
+          }
+        },
+        {
+          "npi": [
+            1235227927
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "56-2435307",
+            "business_name": "Cynthia L. Mansbach"
+          }
+        },
+        {
+          "npi": [
+            1568786689,
+            1689130924,
+            1487320255
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "87-2250791",
+            "business_name": "Next Level Mental Health Counseling PLLC"
+          }
+        },
+        {
+          "npi": [
+            1508905621,
+            1073630802
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "20-3279456",
+            "business_name": "Flournoy Consultations, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1538261268
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "26-2162321",
+            "business_name": "Laura Haas, LCSW & Associates"
+          }
+        },
+        {
+          "npi": [
+            1336182682
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-5568769",
+            "business_name": "Sandra Da Cunha"
+          }
+        },
+        {
+          "npi": [
+            1124297171
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-2505366",
+            "business_name": "Doreen Zumpano-Plante LCSW"
+          }
+        },
+        {
+          "npi": [
+            1194987495
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-5749893",
+            "business_name": "Michelle Ambalu"
+          }
+        },
+        {
+          "npi": [
+            1730284803
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-2505869",
+            "business_name": "Tracy Summer, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1619001021
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-2407723",
+            "business_name": "Maria Cadalzo LCSWR"
+          }
+        },
+        {
+          "npi": [
+            1477723443
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-0727902",
+            "business_name": "Kristen Gauler, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1669815338
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-3621410",
+            "business_name": "Dewan Bajaj"
+          }
+        },
+        {
+          "npi": [
+            1760866057
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "85-3901871",
+            "business_name": "Long Island New Hope Counseling Services LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1942531272,
+            1245783489,
+            1144558651,
+            1326885138,
+            1750752465,
+            1225891229,
+            1972144129,
+            1336485671,
+            1326650243,
+            1215265533,
+            1710682976,
+            1912503400,
+            1982287025,
+            1720299167,
+            1366016115,
+            1154064723,
+            1114960366,
+            1295410090,
+            1326393745,
+            1710029897,
+            1639326739,
+            1972989119,
+            1629759618,
+            1821743295,
+            1649930363,
+            1639125917,
+            1215289152,
+            1023141322,
+            1093321630,
+            1871828772,
+            1437811205,
+            1699094896,
+            1881104552,
+            1083365035,
+            1932402708,
+            124507857,
+            1255817185,
+            1083791909,
+            1801972187,
+            1275967283,
+            1902061724,
+            1245552249,
+            1922580828,
+            1295959419,
+            1992340103,
+            1134531288,
+            1700200094,
+            1366867764,
+            1306151063,
+            1821781592,
+            1942729371,
+            1891265260,
+            1144255977,
+            1629458500,
+            1760897326,
+            1245608801,
+            1144698200,
+            1275869679,
+            1710049929,
+            1396331229,
+            1740706472,
+            1982266060,
+            1447881248,
+            1184580599,
+            1679270136,
+            1477210623,
+            1093862724,
+            1801531033,
+            1902671761,
+            1992901813,
+            1609420561,
+            1699931311,
+            1033664867,
+            1417668864
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-2828349",
+            "business_name": "Sun River Health Inc"
+          }
+        },
+        {
+          "npi": [
+            1164500179
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-7545342",
+            "business_name": "Mindy Levine"
+          }
+        },
+        {
+          "npi": [
+            1154571396
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-4812131",
+            "business_name": "Proactive Counseling LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1689204109,
+            1821796129,
+            1881293546,
+            1235202581,
+            1982242442,
+            1487149977
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3570946",
+            "business_name": "Hasc Diagnostic & Treatment Center, Inc."
+          }
+        },
+        {
+          "npi": [
+            1164513172
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-5767228",
+            "business_name": "Roxana Korb"
+          }
+        },
+        {
+          "npi": [
+            1265583090
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "03-1601293",
+            "business_name": "Deborah Ryan, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1033413901
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-4524719",
+            "business_name": "Ramona Stills- Johnson LCSW"
+          }
+        },
+        {
+          "npi": [
+            1285735233
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-0766224",
+            "business_name": "Valentina Paley, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1356425490
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3666994",
+            "business_name": "Care for the Homeless"
+          }
+        },
+        {
+          "npi": [
+            1487810669,
+            1033725387,
+            1679795991
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-2412205",
+            "business_name": "Bedford Stuyvesant Family Health Center, Inc"
+          }
+        },
+        {
+          "npi": [
+            1841374022
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-2440956",
+            "business_name": "Eileen Wiener, LCSW R"
+          }
+        },
+        {
+          "npi": [
+            1366536641,
+            1699119941,
+            1407562358,
+            1184290835,
+            1528425410,
+            1710480223,
+            1720578321,
+            1457784043,
+            1013531862,
+            1841646858
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "85-2900262",
+            "business_name": "Footprints Mental Health Counseling, PC"
+          }
+        },
+        {
+          "npi": [
+            1497182752
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-5240305",
+            "business_name": "CJM Counseling Licenses Clinical Social Workers PC"
+          }
+        },
+        {
+          "npi": [
+            1184959322
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-3927635",
+            "business_name": "Susan Roth Beerman, LCSW-Psychotherapy"
+          }
+        },
+        {
+          "npi": [
+            1649481912
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "54-2101253",
+            "business_name": "William O'Leary"
+          }
+        },
+        {
+          "npi": [
+            1164743548
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-7582758",
+            "business_name": "Patricia Beller LCSW"
+          }
+        },
+        {
+          "npi": [
+            1972702371
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3224700",
+            "business_name": "Vocational Instruction Project Community Services, Inc."
+          }
+        },
+        {
+          "npi": [
+            1275853202
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-2433307",
+            "business_name": "Healthy Moms Happy Babies"
+          }
+        },
+        {
+          "npi": [
+            1649335720
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-2481568",
+            "business_name": "Mark Marvin MSW"
+          }
+        },
+        {
+          "npi": [
+            1558459016
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-1919640",
+            "business_name": "Nancy Arocho-Mercado LCSW-R PLLC"
+          }
+        },
+        {
+          "npi": [
+            1295924900
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-2032959",
+            "business_name": "Compassion and Care, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1902962061
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-2669559",
+            "business_name": "Paul Engel"
+          }
+        },
+        {
+          "npi": [
+            1326599879
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-1621854",
+            "business_name": "Columbus Center for Medical Rehabilitation, Inc."
+          }
+        },
+        {
+          "npi": [
+            1740509652
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "22-1321905",
+            "business_name": "Stephen Kiesling LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1861540940
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-1509425",
+            "business_name": "Howard Riesel"
+          }
+        },
+        {
+          "npi": [
+            1093082240
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-6588218",
+            "business_name": "Laurie Buelvas-Kristas"
+          }
+        },
+        {
+          "npi": [
+            1619163672
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-7886901",
+            "business_name": "Iryna Shemelyuk, LMHC"
+          }
+        },
+        {
+          "npi": [
+            1508870858
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-4460019",
+            "business_name": "Ada Pazmino LCSW"
+          }
+        },
+        {
+          "npi": [
+            1720128689
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-1242656",
+            "business_name": "Carmel Psychological Health PC"
+          }
+        },
+        {
+          "npi": [
+            1467646059
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-3187988",
+            "business_name": "Clinical Consultation & Supervision Services LCSWR PLLC"
+          }
+        },
+        {
+          "npi": [
+            1386935948,
+            1073907358
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "23-7271852",
+            "business_name": "Colonial Youth and Family Services Inc"
+          }
+        },
+        {
+          "npi": [
+            1073686168,
+            1265217285,
+            1790712289,
+            1861804759
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-2544630",
+            "business_name": "Brownsville Multi-Service Family Health Center"
+          }
+        },
+        {
+          "npi": [
+            1679975106,
+            1255328803
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "32-0250876",
+            "business_name": "Lisa Brown-Eisel, LCSW, PC"
+          }
+        },
+        {
+          "npi": [
+            1639102767
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-2710184",
+            "business_name": "Rafaelina Acosta LCSW"
+          }
+        },
+        {
+          "npi": [
+            1497737860,
+            1124000591,
+            1174127658,
+            1619364429,
+            1942604947,
+            1689991143
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3305108",
+            "business_name": "Heart and Soul Community Counseling Inc"
+          }
+        },
+        {
+          "npi": [
+            1407825698
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "26-4389619",
+            "business_name": "Linnar Ortalan"
+          }
+        },
+        {
+          "npi": [
+            1922044635
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-9622910",
+            "business_name": "Alejandro Godoy, MSW"
+          }
+        },
+        {
+          "npi": [
+            0
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-4107689",
+            "business_name": "Hispanic American Consulting Services, Inc."
+          }
+        },
+        {
+          "npi": [
+            1992929962
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-0483597",
+            "business_name": "Joseph Hazucha"
+          }
+        },
+        {
+          "npi": [
+            1912332362,
+            1053881714,
+            1013930940,
+            1669106522,
+            1992167480,
+            1891285789,
+            1467956904,
+            1275629248,
+            1104331032,
+            1437559457,
+            1144641879
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-1081232",
+            "business_name": "Morris Heights Health Center"
+          }
+        },
+        {
+          "npi": [
+            1952478257
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "56-2366774",
+            "business_name": "Daniele Chiti LCSW, PC"
+          }
+        },
+        {
+          "npi": [
+            1013069392
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-3032258",
+            "business_name": "Barbara Comforto dba Bittersweet Counseling"
+          }
+        },
+        {
+          "npi": [
+            1467865212
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-5703400",
+            "business_name": "Assessment N Counseling, LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1801992342
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "56-7745408",
+            "business_name": "Mignyetta C Ramnani"
+          }
+        },
+        {
+          "npi": [
+            1235469107
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-1687438",
+            "business_name": "Jacob Stauber"
+          }
+        },
+        {
+          "npi": [
+            1144359589
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-4305954",
+            "business_name": "Rosalie Harris"
+          }
+        },
+        {
+          "npi": [
+            1922508274,
+            1669022455
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "85-2097914",
+            "business_name": "Brave Medical PC"
+          }
+        },
+        {
+          "npi": [
+            1124178306,
+            1548605306
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-1740071",
+            "business_name": "Westchester Jewish Community Services, Inc."
+          }
+        },
+        {
+          "npi": [
+            1629398235,
+            1902928666
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-1623856",
+            "business_name": "United Cerebral Palsy Associations of New York State"
+          }
+        },
+        {
+          "npi": [
+            1396711354
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-2231250",
+            "business_name": "Emaotional Lanscaping"
+          }
+        },
+        {
+          "npi": [
+            1538478961
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "84-2301600",
+            "business_name": "Jacob Jacoby MD PC"
+          }
+        },
+        {
+          "npi": [
+            1326367137
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "47-3781992",
+            "business_name": "Susan F Lewis LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1336219385
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-7661945",
+            "business_name": "David Bracero, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1295081545
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-2002192",
+            "business_name": "Phara Gladden LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1912259482
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-0648753",
+            "business_name": "Christine Morris"
+          }
+        },
+        {
+          "npi": [
+            1760544779
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-9408179",
+            "business_name": "Marian Steele-Murray"
+          }
+        },
+        {
+          "npi": [
+            1942659289
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-9447888",
+            "business_name": "Diane Jaulus MSW"
+          }
+        },
+        {
+          "npi": [
+            1336284223
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-5721596",
+            "business_name": "Elaine Argueta"
+          }
+        },
+        {
+          "npi": [
+            1760696819
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-7661544",
+            "business_name": "Sharifa Armorer LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1407952054,
+            1790378248
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "23-7358415",
+            "business_name": "Interborough Developmental & Consultation Center"
+          }
+        },
+        {
+          "npi": [
+            1871713065
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-4642654",
+            "business_name": "Dawn Wigutow, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1437232105
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "14-9666128",
+            "business_name": "Ursula Winter"
+          }
+        },
+        {
+          "npi": [
+            1619426210
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-2308482",
+            "business_name": "Associated Therapists of Rockland"
+          }
+        },
+        {
+          "npi": [
+            1841282225
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-8400871",
+            "business_name": "Eleanor Perlman, LCSW, DCSW, BCD"
+          }
+        },
+        {
+          "npi": [
+            1699865428
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-3344346",
+            "business_name": "Carla Kandel"
+          }
+        },
+        {
+          "npi": [
+            1669628376
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-3506200",
+            "business_name": "Elyse Beyer"
+          }
+        },
+        {
+          "npi": [
+            1790988327
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-5347673",
+            "business_name": "Michael Fischman dba The Institute for Psychotherapeuti"
+          }
+        },
+        {
+          "npi": [
+            1275542052,
+            1972571917
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-6078704",
+            "business_name": "Ohel Children's Home and Family Services, Inc."
+          }
+        },
+        {
+          "npi": [
+            1841211877
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "58-4725872",
+            "business_name": "Lillian Font-Ramos LCSW"
+          }
+        },
+        {
+          "npi": [
+            1316990732
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "41-2152343",
+            "business_name": "Heiko Ganzer LCSW dba Phoenix Systems"
+          }
+        },
+        {
+          "npi": [
+            1598849101
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-3363208",
+            "business_name": "Carmine Angrisani LCSW"
+          }
+        },
+        {
+          "npi": [
+            1831401587
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-4489819",
+            "business_name": "Renae Tramonte, CSW"
+          }
+        },
+        {
+          "npi": [
+            1467707810
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-2774981",
+            "business_name": "Serenity Zone, LCSW, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1922339548
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-9380354",
+            "business_name": "Ms. Jane Salzano LCSW"
+          }
+        },
+        {
+          "npi": [
+            1285724120
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-0424925",
+            "business_name": "Arnold Eisman, MSW"
+          }
+        },
+        {
+          "npi": [
+            1053600536
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-6646889",
+            "business_name": "Kashima Thoms, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1952458481
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-0958775",
+            "business_name": "Focus on Solutions LCSW - A Psychotherapy Practice PC"
+          }
+        },
+        {
+          "npi": [
+            1124145958
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-2348930",
+            "business_name": "Gerald Dwyer, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1598936064
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-9388216",
+            "business_name": "Naomi L Franklin LCSW"
+          }
+        },
+        {
+          "npi": [
+            1518146398
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "12-6623989",
+            "business_name": "Advanced Psychotherapy"
+          }
+        },
+        {
+          "npi": [
+            1437469608
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-4460170",
+            "business_name": "Innovations in Psychiatry PC"
+          }
+        },
+        {
+          "npi": [
+            1407902455
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-0629582",
+            "business_name": "Michele A Cipriano"
+          }
+        },
+        {
+          "npi": [
+            1336483031
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-2595426",
+            "business_name": "Divine Counseling and Wellness"
+          }
+        },
+        {
+          "npi": [
+            1902962061
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-6489434",
+            "business_name": "Paul Engel"
+          }
+        },
+        {
+          "npi": [
+            1134343973
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3665448",
+            "business_name": "Paul W Zampieron LCSW"
+          }
+        },
+        {
+          "npi": [
+            1518487297,
+            1316008485,
+            1982779492,
+            1780016980
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-3259069",
+            "business_name": "Behavioral Health Associates, LCSW, PC"
+          }
+        },
+        {
+          "npi": [
+            1164758009
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-2866542",
+            "business_name": "Diaon Clarke MSW"
+          }
+        },
+        {
+          "npi": [
+            1447554845
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-2465821",
+            "business_name": "Harry P Szachtel"
+          }
+        },
+        {
+          "npi": [
+            1588729743
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "22-8564430",
+            "business_name": "Donna D Pappalardo, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1427265057
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-2983803",
+            "business_name": "Just Kids  Diagnostic and Treatment Center, Inc"
+          }
+        },
+        {
+          "npi": [
+            1003118027
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-6722125",
+            "business_name": "James T Mayer dba True to Self Counseling"
+          }
+        },
+        {
+          "npi": [
+            1063488377
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-7501602",
+            "business_name": "Thomas McCoy"
+          }
+        },
+        {
+          "npi": [
+            1023103066
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-8442120",
+            "business_name": "Michael Manza"
+          }
+        },
+        {
+          "npi": [
+            1235220039
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3540503",
+            "business_name": "Rosa  A. Silfa LCSW"
+          }
+        },
+        {
+          "npi": [
+            1720158520
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3906576",
+            "business_name": "Bibiana Geller LCSW"
+          }
+        },
+        {
+          "npi": [
+            1265969257
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-4465138",
+            "business_name": " Joseph Illovsky LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1467784124
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-5071898",
+            "business_name": "Judith B Nadel"
+          }
+        },
+        {
+          "npi": [
+            1508174137
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-6567966",
+            "business_name": "Vincent J Palumbo Jr"
+          }
+        },
+        {
+          "npi": [
+            1912168527
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-1803736",
+            "business_name": "Behavioral Health Medical Practice"
+          }
+        },
+        {
+          "npi": [
+            1881806990
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "81-5115453",
+            "business_name": "Complete Neuropsychology PC"
+          }
+        },
+        {
+          "npi": [
+            1184976862
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "15-0532087",
+            "business_name": "Cayuga Home for Children dba Cayuga Centers"
+          }
+        },
+        {
+          "npi": [
+            1356487094
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "08-8624786",
+            "business_name": "Helene Chin, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1346711751,
+            1649420035,
+            1952851024,
+            1598295388
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-0887431",
+            "business_name": "Advanced Psychotherapy & Behavioral Health Services"
+          }
+        },
+        {
+          "npi": [
+            0,
+            1114064854,
+            1649316779,
+            1881709327,
+            1053636373,
+            1912044140
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-6007353",
+            "business_name": "DCMH Yonkers Community Services"
+          }
+        },
+        {
+          "npi": [
+            1861721110
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-1499722",
+            "business_name": "Maria Corso LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1235295544
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "10-7788631",
+            "business_name": "Bela Gershgorin, LCSW-R"
+          }
+        },
+        {
+          "npi": [
+            1932250032
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-3547845",
+            "business_name": "Joyce Lynn Herling"
+          }
+        },
+        {
+          "npi": [
+            1356811947
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-2644161",
+            "business_name": "Chanell R Smiley MSW"
+          }
+        },
+        {
+          "npi": [
+            1578525234
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-2172638",
+            "business_name": "Oleg Sirontnikov LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1548345986
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "09-0420222",
+            "business_name": "Gail A Vodopija, CSW"
+          }
+        },
+        {
+          "npi": [
+            1861556953
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "05-5627502",
+            "business_name": "Margery Tannenbaum LCSW"
+          }
+        },
+        {
+          "npi": [
+            1447767371
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "87-0879054",
+            "business_name": "Nashon Clark dba Love Inspires Psychotherapy LCSW PC"
+          }
+        },
+        {
+          "npi": [
+            1114957487
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "46-3568636",
+            "business_name": "Cindy Floyd, LCSW"
+          }
+        },
+        {
+          "npi": [
+            1790996767
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "26-4413304",
+            "business_name": "Elizabeth McKenna"
+          }
+        },
+        {
+          "npi": [
+            1720228604
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "06-4587775",
+            "business_name": "Shantie Schwarte LCSW"
+          }
+        },
+        {
+          "npi": [
+            1790822237
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-4150223",
+            "business_name": "Calm Seas Psychotherapy LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1700551793
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-2697725",
+            "business_name": "Betances Health Center"
+          }
+        },
+        {
+          "npi": [
+            1164500179
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-5564937",
+            "business_name": "The Jewish Board of Family and Children Services, Inc."
+          }
+        },
+        {
+          "npi": [
+            1336491497,
+            1861721110,
+            1578752861,
+            1437334190,
+            1598994345,
+            1477729085,
+            1508937145,
+            1760569081,
+            1447405006,
+            1982970778,
+            1497826952,
+            1811900046,
+            1235129164,
+            1942364146,
+            1891176780,
+            1699831495,
+            1316169956,
+            1982788758,
+            1154482792,
+            1962508291,
+            1669650206,
+            1205270253,
+            1215143219
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3422549",
+            "business_name": "Nassau Guidance and Counseling, PC"
+          }
+        },
+        {
+          "npi": [
+            1023180247
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-4345958",
+            "business_name": "Lourdes Sanchez dba Lourdes Sanchez Psychotherapist"
+          }
+        }
+      ]
+    },
+    {
+      "provider_group_id": 945,
+      "network_name": [],
+      "provider_groups": [
+        {
+          "npi": [
+            1750983110
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "27-5273404",
+            "business_name": "MJHS Medical Associates PC"
+          }
+        },
+        {
+          "npi": [
+            1225307291
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "86-3071561",
+            "business_name": "John Dowsett"
+          }
+        },
+        {
+          "npi": [
+            1376075838,
+            1215599592,
+            1174124341
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "99-4342121",
+            "business_name": "East 48th Medical PC"
+          }
+        },
+        {
+          "npi": [
+            1578987293,
+            1366757494,
+            1013152354,
+            1851828834,
+            1508482282,
+            1518584192,
+            1124535299,
+            1184344723,
+            1902045784,
+            1891024816,
+            1851383889,
+            1154735579,
+            1447893060,
+            1851939433,
+            1588942270,
+            1144683830,
+            1649721689,
+            1265078133,
+            1285119883,
+            1245628973,
+            1619516564,
+            1275129876,
+            1174901011,
+            1538783907,
+            1457995763,
+            1013413491,
+            1013274992,
+            1508386814,
+            1760598247,
+            1295286060,
+            1396363040,
+            1952617086,
+            1679192074,
+            1558538694,
+            1902170947,
+            1306478839,
+            1245549591,
+            1922694579,
+            1427101476,
+            1457844425,
+            1780740621,
+            1710635206,
+            1457000424,
+            1184278434,
+            1053989863,
+            1558697169,
+            1508591827,
+            1487079067,
+            1710364104,
+            1962767046,
+            1114065190,
+            1013324839,
+            1245701499,
+            1295959419,
+            1700855590,
+            1033875927,
+            1831769959,
+            1043997299,
+            1396854030,
+            1922433754,
+            1225055817,
+            1134901739,
+            1053712000,
+            1700537875,
+            1942729371,
+            1235646449,
+            1174133409,
+            1336900596,
+            1669878484,
+            1275148637,
+            1770011868,
+            1508528308,
+            1700181302,
+            1609150861,
+            1225208929,
+            1700137023,
+            1770123754,
+            1215201538,
+            1083203046,
+            1710335369,
+            1447842612,
+            1669983219,
+            1346621240,
+            1871976431,
+            1760910475,
+            1225554546,
+            1881670826,
+            1922576412,
+            1699884759,
+            1598958027,
+            1558988394,
+            1356443998,
+            1821532698,
+            1871039503,
+            1013368810,
+            1518291699,
+            1093977274,
+            1265081590,
+            1538627872,
+            1841652831,
+            1578601100,
+            1073907358,
+            1730261181,
+            1508042110,
+            1780469379,
+            1730636473,
+            1760569172,
+            1376098467,
+            1255858288,
+            1740652908,
+            1093112971,
+            1093368474,
+            1205381738,
+            1134360878,
+            1861617987,
+            1083196455,
+            1356476006,
+            1578092979,
+            1619448123,
+            1811978943,
+            1053978130,
+            1013186725,
+            1154405389,
+            1730701038,
+            1922146646,
+            1841693199,
+            1164975801,
+            1770134603,
+            1841472008,
+            1578804944,
+            1366712507,
+            1659057966,
+            1871986778,
+            1851940274,
+            1851811764,
+            1063024263,
+            1134755705,
+            1619418456,
+            1366860710,
+            1891045993,
+            1053032227,
+            1710049549,
+            1205040433,
+            1851674295,
+            1861998866,
+            1336506435,
+            1861716763,
+            1992322606,
+            1649676453,
+            1629635537,
+            1447366067,
+            1184105827,
+            1568871291,
+            1336386143,
+            1871982959,
+            1053557298,
+            1205091626
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "85-2938829",
+            "business_name": "Grow Healthcare Group PA"
+          }
+        },
+        {
+          "npi": [
+            1336619147,
+            1447995758,
+            1194480822,
+            1962700377,
+            1093728917,
+            1164087847,
+            1508917238,
+            1861849119,
+            1356870406,
+            1588877971,
+            1316241276,
+            1447623681,
+            1407922719,
+            1134272461,
+            1508090101,
+            1023291689,
+            1295619534,
+            1215376777,
+            1023499167
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "11-3489344",
+            "business_name": "New York Psychiatric Services, PC"
+          }
+        },
+        {
+          "npi": [
+            1922516566,
+            1194860155,
+            1184344723,
+            1982170957,
+            1528229150,
+            1174979363,
+            1811900046,
+            1356942163,
+            1619516564,
+            1477823649,
+            1013174390,
+            1720101520,
+            1619573599,
+            1427531854,
+            1720694805,
+            1255733762,
+            1508116831,
+            1881746162,
+            1619448123,
+            1184759490
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "83-2675429",
+            "business_name": "New York Medical Behavioral Health Services PC"
+          }
+        },
+        {
+          "npi": [
+            1881480358,
+            1578876504,
+            1720321870,
+            1568292159,
+            1679269393,
+            1215422076,
+            1437764834,
+            1912530411,
+            1881099273,
+            1336786938,
+            1447413596,
+            1891468260,
+            1508672049,
+            1710746409,
+            1447015904,
+            1932832342,
+            1942666862,
+            1043935836,
+            1811645021,
+            1568214609,
+            1063054070,
+            1497578793,
+            1275362543,
+            1447009170,
+            1225765217,
+            1821791609,
+            1104416635,
+            1548010358,
+            1710076062,
+            1245895291,
+            1295481166,
+            1740825785,
+            1629781976,
+            1750876769,
+            1154105591
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "88-3487475",
+            "business_name": "Cartwheel Health Services PC"
+          }
+        },
+        {
+          "npi": [
+            1831841071,
+            1649900119,
+            1861104366,
+            1326706961,
+            1396314936,
+            1215809140,
+            1831614767,
+            1366509424,
+            1083335830,
+            1043799091,
+            1376209411,
+            1649603671,
+            1053905620,
+            1477034510,
+            1720795289,
+            1164135273,
+            1659180776,
+            1952907370,
+            1104521178,
+            1508314600,
+            1083365506,
+            1053011155,
+            1144887340,
+            1982467643,
+            1477385755,
+            1841930716,
+            1417486952,
+            1497539415,
+            1346697810,
+            1245417005,
+            1790226082,
+            1225446685,
+            1265101695,
+            1164129144,
+            1407311871,
+            1417676958,
+            1083345037,
+            1386380418,
+            1548057185,
+            1235943309,
+            1154481893,
+            1982816773,
+            1568002905,
+            1780059188,
+            1487134862,
+            1639495062,
+            1083378848,
+            1891008645,
+            1568928695,
+            1689821837,
+            1699158386,
+            1699408765,
+            1093584153,
+            1568093516,
+            1457018087,
+            1487491734,
+            1487462123,
+            1114958386,
+            1083766992,
+            1194890608,
+            1740047356,
+            1194397562,
+            1245385335,
+            1578180188,
+            1659773091,
+            1003506049,
+            1891466991,
+            1770163669,
+            1912549288,
+            1841538964,
+            1154993806,
+            1679145551,
+            1982596722,
+            1669986774,
+            1447866413,
+            1942177696,
+            1528089968,
+            1639858137,
+            1578765939,
+            1003560376,
+            1790268639,
+            1780574285,
+            1376587360,
+            1447184940,
+            1639378904,
+            1063102770,
+            1912758384,
+            1326755687,
+            1861119133,
+            1700591914,
+            1295527232,
+            1235016676,
+            1306547609,
+            1184107757,
+            1437677515,
+            1619531506,
+            1457234080,
+            1477852267,
+            1023866233,
+            1144040015,
+            1679023212,
+            1790337590,
+            1902483431,
+            1821376013,
+            1487720488,
+            1083032072,
+            1942976329,
+            1710861182,
+            1033959721,
+            1700335056,
+            1710349691,
+            1295435196,
+            1356823124,
+            1891431987,
+            1184303109,
+            1982180022,
+            1982287025,
+            1093606840,
+            1811623267,
+            1235294521,
+            1649655499,
+            1780693689,
+            1952937724,
+            1851342018,
+            1669099495,
+            1578161329,
+            1033003827,
+            1922882109,
+            1386505733,
+            1235386624,
+            1144819871,
+            1104061803,
+            1043829393,
+            1639264542,
+            1528538550,
+            1073968301,
+            1437692191,
+            1215633094,
+            1225758139,
+            1376325308,
+            1124442546,
+            1821682220,
+            1093534612,
+            1669755708,
+            1114114261,
+            1316432073,
+            1487365656,
+            1528645538,
+            1013488808,
+            1396396537,
+            1821785684,
+            1518149822,
+            1376120006,
+            1043613425,
+            1659257889,
+            1114678968,
+            1376163022,
+            1972285252,
+            1669082038,
+            1609496355,
+            1396511218,
+            1174049068,
+            1861995052,
+            1669225892,
+            1548912264,
+            1104355593,
+            1184943227,
+            1508123449,
+            1336739184,
+            1073194775,
+            1831839182,
+            1164379525,
+            1528291317,
+            1891428447,
+            1659095552,
+            1568188316,
+            1366320020,
+            1558873091,
+            1669218194,
+            1639937873,
+            1326436320,
+            1912877291,
+            1760292379,
+            1770911612,
+            1124758008,
+            1437826880,
+            1821774944,
+            1447142070,
+            1225714678,
+            1902671761,
+            1780539098,
+            1427782119,
+            1346855608,
+            1194274860,
+            1669017208,
+            1023697927,
+            1215137641,
+            1861168619,
+            1598345282,
+            1992916431,
+            1861332470,
+            1679052575,
+            1487067054,
+            1578701579,
+            1396441135,
+            1154720704,
+            1558587378,
+            1538783907,
+            1922432897,
+            1881029387,
+            1386361269,
+            1093281842,
+            1538208434,
+            1811530983,
+            1578035473,
+            1841841897,
+            1922852797,
+            1356220404,
+            1245815653,
+            1245933415,
+            1265059919,
+            1376256289,
+            1639762065,
+            1962806224,
+            1467171421,
+            1891279253,
+            1427820075,
+            1447668603,
+            1407528656,
+            1972702371,
+            1811436736,
+            1619123130,
+            1972193456,
+            1639047822,
+            1588421093,
+            1356814230,
+            1124208715,
+            1669988036,
+            1790258168,
+            1225776222,
+            1275219792,
+            1053853572,
+            1588512248,
+            1427836493,
+            1154193811,
+            1770159832,
+            1851092233,
+            1689415663,
+            1134852346,
+            1669574877,
+            1205590148,
+            1023951464,
+            1295064145,
+            1598272544,
+            1871044321,
+            1841071321,
+            1033714936,
+            1144323411,
+            1447760160,
+            1043543903,
+            1881764165,
+            1982164299,
+            1992260558,
+            1861960585,
+            1114336542,
+            1003760802,
+            1447891767,
+            1356081582,
+            1457098147,
+            1790404044,
+            1487808978,
+            1831307354,
+            1437816014,
+            1639828163,
+            1689383887,
+            1366614026,
+            1518743301,
+            1336809003,
+            1699884759,
+            1285371674,
+            1407452782,
+            1396222642,
+            1184330524,
+            1386326320,
+            1861188476,
+            1114616828,
+            1891531562,
+            1306375753,
+            1770046484,
+            1265981153,
+            1588237119,
+            1639654445,
+            1902566128,
+            1275129751,
+            1194524330,
+            1689081655,
+            1255083861,
+            1881371581,
+            1386019586,
+            1154018646,
+            1548566482,
+            1376902577,
+            1518401314,
+            1043775380,
+            1891553053,
+            1134778368,
+            1801222393,
+            1639326739,
+            1629759618,
+            1003681909,
+            1861623647,
+            1972724284,
+            1427733682,
+            1134586381,
+            1063940807,
+            1356836209,
+            1659178325,
+            1407413842,
+            1457085292,
+            1366175960,
+            1659136851,
+            1558839134,
+            1194462853,
+            1821655853,
+            1578620332,
+            1821818667,
+            1740895358,
+            1205682275,
+            1790378248,
+            1164190427,
+            1952134553,
+            1932090602,
+            1972013647,
+            1053084418,
+            1700320926,
+            1568340669,
+            1013652908,
+            1790001014,
+            1700621463,
+            1982130670,
+            1023536331,
+            1255585543,
+            1366914731,
+            1922572619,
+            1639697519,
+            1194338533,
+            1629837042,
+            1326763715,
+            1730631920,
+            1346679198,
+            1982493169,
+            1932771565,
+            1912527904,
+            1689449837,
+            1295541464,
+            1134900293,
+            1932914900,
+            1144865759,
+            1154750768,
+            1336574029,
+            1134761034,
+            1609355270,
+            1619087723,
+            1497396907,
+            1174325781,
+            1720699747,
+            1093105355,
+            1891518288,
+            1427714807,
+            1003474495,
+            1356876049,
+            1811768328,
+            1154017085,
+            1225890023,
+            1114609047,
+            1134959711,
+            1629782750,
+            1679857114,
+            1417606021,
+            1871473264,
+            1881279453,
+            1265882252,
+            1598994097
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "45-4617245",
+            "business_name": "Comprehensive Counseling, PLLC"
+          }
+        },
+        {
+          "npi": [
+            1558538694,
+            1881249829,
+            1497273643,
+            1770238347,
+            1588140370,
+            1184943227,
+            1174165971,
+            1972791945
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "88-3580659",
+            "business_name": "Starling Medical Group PC"
+          }
+        },
+        {
+          "npi": [
+            1801113345
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "82-4982645",
+            "business_name": "Refresh Psychotherapy LCSW PLLC"
+          }
+        },
+        {
+          "npi": [
+            1114178209,
+            1942764949
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "86-3166824",
+            "business_name": "Brain Health USA Inc"
+          }
+        },
+        {
+          "npi": [
+            1457670960
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "07-3563110",
+            "business_name": "Mia Adler LCSW"
+          }
+        },
+        {
+          "npi": [
+            1285113480
+          ],
+          "tin": {
+            "type": "ein",
+            "value": "13-8948999",
+            "business_name": "Zoe Malkin LCSW LLC"
+          }
+        }
+      ]
+    }
+  ],
+  "in_network": [
+    {
+      "negotiation_arrangement": "ffs",
+      "name": "FNA BX W/US GDN EA ADDL",
+      "billing_code_type": "CPT",
+      "billing_code_type_version": "2022",
+      "billing_code": "10006",
+      "description": "FINE NEEDLE ASPIRATION BX W/US GDN EA ADDL",
+      "negotiated_rates": [
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 69.85,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "11"
+              ],
+              "billing_class": "professional",
+              "billing_code_modifier": [
+                "59"
+              ],
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "negotiation_arrangement": "ffs",
+      "name": "AUDITORY FUNCTION, 60 MIN",
+      "billing_code_type": "RC",
+      "billing_code_type_version": "2022",
+      "billing_code": "470",
+      "description": "EVALUATION OF CENTRAL AUDITORY FUNCTION, WITH REPORT; INITIAL 60 MINUTES",
+      "negotiated_rates": [
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 343.66,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "22"
+              ],
+              "billing_class": "institutional",
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            157
+          ]
+        },
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 112.98,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "62"
+              ],
+              "billing_class": "institutional",
+              "additional_information": "92620",
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            255
+          ]
+        },
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 190.44,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "22"
+              ],
+              "billing_class": "institutional",
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "negotiation_arrangement": "ffs",
+      "name": "Audiology General",
+      "billing_code_type": "RC",
+      "billing_code_type_version": "2022",
+      "billing_code": "470",
+      "description": "Audiology General",
+      "negotiated_rates": [
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 343.66,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "22"
+              ],
+              "billing_class": "institutional",
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            157
+          ]
+        },
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 112.98,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "62"
+              ],
+              "billing_class": "institutional",
+              "additional_information": "92620",
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            255
+          ]
+        },
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 190.44,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "22"
+              ],
+              "billing_class": "institutional",
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "negotiation_arrangement": "ffs",
+      "name": "GROUP PSYCHOTHERAPY",
+      "billing_code_type": "CPT",
+      "billing_code_type_version": "2022",
+      "billing_code": "90853",
+      "description": "GROUP PSYCHOTHERAPY (OTHER THAN OF A MULTIPLE-FAMILY GROUP)",
+      "negotiated_rates": [
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 25.0,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "11"
+              ],
+              "billing_class": "professional",
+              "billing_code_modifier": [
+                "AJ"
+              ],
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            912
+          ]
+        },
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 26.3,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "10"
+              ],
+              "billing_class": "professional",
+              "billing_code_modifier": [
+                "95"
+              ],
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            945
+          ]
+        },
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 26.3,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "10"
+              ],
+              "billing_class": "professional",
+              "billing_code_modifier": [
+                "95"
+              ],
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            876
+          ]
+        },
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 48.67,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "10"
+              ],
+              "billing_class": "professional",
+              "billing_code_modifier": [
+                "GT"
+              ],
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            879
+          ]
+        },
+        {
+          "negotiated_prices": [
+            {
+              "negotiated_type": "negotiated",
+              "negotiated_rate": 24.84,
+              "expiration_date": "9999-12-31",
+              "service_code": [
+                "10"
+              ],
+              "billing_class": "professional",
+              "billing_code_modifier": [
+                "95"
+              ],
+              "setting": "outpatient"
+            }
+          ],
+          "provider_references": [
+            898
+          ]
+        }
+      ]
+    }
+  ]
+}

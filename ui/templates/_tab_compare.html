@@ -1,0 +1,89 @@
+{# Compare Groups: what explains price, and one row per group: min, Q1, the median (highlighted), Q3, max and the counts. The
+   hospital rates billed under a revenue code are groups of their own, in their own table (#40), with Hide / Show.
+   Narrowed to a provider, each group also shows everyone's median there. #}
+{%- set per_network = result.file_count > 1 and group_by != "none" %}
+{# A sortable Compare header: links to this sort (or its flip when it is the current one), says the current one. #}
+{% macro gsort_th(key, label, cls="", title="") -%}
+  {%- set active = group_sort[0] == key %}{% set dir = group_sort[1] -%}
+  {%- set first = group_sorts[key] %}{% set next_dir = ("asc" if dir == "desc" else "desc") if active else first -%}
+  <th class="{{ (cls ~ ' sortable') | trim }}" aria-sort="{{ ('ascending' if dir == 'asc' else 'descending') if active else 'none' }}"{% if title %} title="{{ title }}"{% endif %}><a href="{{ url(gsort=key if (key, next_dir) != ('count', 'desc') else none, gdir=none if next_dir == first else next_dir, offset=none) }}#p-compare">{{ caller() if caller else label }}<span class="arrow" aria-hidden="true">{{ ("▲" if dir == "asc" else "▼") if active else "↕" }}</span></a></th>
+{%- endmacro %}
+{% macro group_row(g, has_lead, has_modifier) -%}
+<tr class="group-row{% if g.active %} sel{% endif %}" data-href="{{ g.href }}" title="Min {{ g.min_rate | money }} · Q1 {{ g.q1 | money }} · median {{ g.median | money }} · Q3 {{ g.q3 | money }} · max {{ g.max_rate | money }}">
+  {% if has_lead %}<td class="glead">{{ g.lead or "—" }}</td>{% endif %}
+  {% if has_modifier %}<td class="gname"><a href="{{ g.href }}" title="{{ g.modifier_title }}">{{ g.modifier_name }}</a></td>
+  <td class="gplace" title="{{ g.place_title }}">{{ g.place_name }}</td>
+  {%- else %}<td class="gplace gname" title="{{ g.place_title }}"><a href="{{ g.href }}">{{ g.place_name }}</a></td>{% endif %}
+  <td class="num">{{ g.min_rate | money }}</td>
+  <td class="num">{{ g.q1 | money }}</td>
+  <td class="num med">{{ g.median | money }}</td>
+  <td class="num">{{ g.q3 | money }}</td>
+  <td class="num">{{ g.max_rate | money }}</td>
+  {% if narrowed %}<td class="num every">{% if g.everyone_median is defined %}{{ g.everyone_median | money }}{% if g.mostly_this %} <span class="badge" title="This provider holds most of the group’s {{ units[1] }}">mostly this provider</span>{% endif %}{% else %}—{% endif %}</td>{% endif %}
+  <td class="num">{{ "{:,}".format(g.count) }}</td>
+  {% if not narrowed %}<td class="num">{{ "{:,}".format(g.provider_count) }}</td>{% endif %}
+  <td class="num">{{ "{:,}".format(g.npi_count) }}</td>
+  <td class="num">{% if g.relative is none %}—{% elif g.reference %}1.00× ref{% else %}{{ "%.2f" | format(g.relative) }}×{% endif %}</td>
+  <td class="num outc{% if g.low_outliers or g.high_outliers %} outl{% endif %}">{% set parts = [("{:,} low".format(g.low_outliers)) if g.low_outliers else none, ("{:,} high".format(g.high_outliers)) if g.high_outliers else none] | select | list %}{% for p in parts %}{{ " · " if not loop.first }}<span class="nw">{{ p }}</span>{% else %}—{% endfor %}</td>
+</tr>
+{%- endmacro %}
+<section class="panel" id="p-compare" role="tabpanel">
+  {% if explained_parts %}
+  <div class="card explain">
+    <h2 class="sec">What Explains Price For {{ result.billing_code }}</h2>
+    <div class="xbar" role="img" aria-label="{% for p in explained_parts %}{{ p.label }} {{ p.pct }}%{{ ", " if not loop.last }}{% endfor %}">
+      {% for p in explained_parts %}<span class="{{ p.cls }}" style="flex:{{ p.pct }}" title="{{ p.label }}: {{ p.pct }}%"></span>{% endfor %}
+    </div>
+    <div class="xlegend">
+      {% for p in explained_parts %}<span><i class="{{ p.cls }}"></i>{{ p.label }} <b>{{ p.pct }}%</b></span>{% endfor %}
+    </div>
+    <p class="small">Share of the price differences, measured in percentages (a $10 vs $20 gap counts the same as $100 vs $200), over {{ "{:,}".format(explained.count) }} of {{ result.billing_code }}’s own rates{% if show_billed_as %} (hospital rates left out){% endif %}. See “How These Numbers Are Computed” under Statistics.</p>
+  </div>
+  {% endif %}
+{% macro group_table(rows, head) -%}
+  {%- set has_lead = rows | selectattr("lead") | list | length > 0 %}
+  {#- No row with a modifier (hospital rates usually): the column would say "no modifier" on every row. #}
+  {%- set has_modifier = rows | selectattr("modifiers") | list | length > 0 %}
+  <div class="card">
+    <div class="tablewrap">
+    <table class="gt">
+      <thead><tr class="axisrow">
+        {% if has_lead %}{{ gsort_th("lead", head) }}{% endif %}
+        {% if has_modifier %}{{ gsort_th("modifier", "Modifier") }}{% endif %}
+        {{ gsort_th("place", "Place Of Service") }}
+        {{ gsort_th("min", "Min", "num", "The lowest price") }}
+        {{ gsort_th("q1", "Q1", "num", "A quarter of the prices are below this") }}
+        {{ gsort_th("median", "This Provider" if narrowed else "Median", "num med") }}
+        {{ gsort_th("q3", "Q3", "num", "A quarter of the prices are above this") }}
+        {{ gsort_th("max", "Max", "num", "The highest price") }}
+        {% if narrowed %}{{ gsort_th("everyone", "Everyone", "num", "Everyone’s median in the same group, counted the same way") }}{% endif %}
+        {% call gsort_th("count", "", "num", (units[1][:1] | upper) ~ units[1][1:] ~ " in the group (Count by)" ~ (". Both networks are searched: a provider’s same price in each counts once per network" if per_network else "")) %}{% for w in units[1].split() %}{{ " " if not loop.first }}{{ w[:1] | upper }}{{ w[1:] }}{% endfor %}{% endcall %}
+        {% if not narrowed %}{{ gsort_th("providers", "Providers", "num", "Distinct provider names") }}{% endif %}{# narrowed: one provider #}
+        {{ gsort_th("clinicians", "Clinicians", "num", "Distinct NPIs: the individual clinicians (and organizations) the group’s prices name") }}
+        {% set r = reference_group %}
+        {% call gsort_th("ref", "", "num ref", "Median vs the reference group" ~ (", " ~ r.label ~ ", " ~ "{:,}".format(r.count) ~ " " ~ (units[0] if r.count == 1 else units[1]) ~ ": " ~ ("the " ~ r.billing_class ~ " group without a modifier with the most " ~ units[1] if r.reference_rule == "base" else ("no " ~ r.billing_class ~ " group without a modifier, so the " ~ r.billing_class ~ " group with the most " ~ units[1] if r.reference_rule == "own_class" else "the group with the most " ~ units[1])) ~ " (Count by)" if r else "") ~ ". For this code only; differences mix the modifier/place effect with which providers publish each group") %}× Ref{% if r %}<span class="refnote"> {{ r.name }}</span>{% endif %}{% endcall %}
+        {{ gsort_th("outliers", "Outliers", "num", "Prices more than 1.5 times the Q1–Q3 range below Q1 or above Q3") }}
+      </tr></thead>
+      <tbody>{% for g in rows[:group_limit] %}{{ group_row(g, has_lead, has_modifier) }}{% endfor %}</tbody>
+      {% if rows | length > group_limit %}
+      <tbody class="more-groups" hidden>{% for g in rows[group_limit:] %}{{ group_row(g, has_lead, has_modifier) }}{% endfor %}</tbody>
+      {% endif %}
+    </table>
+    </div>
+    {% if rows | length > group_limit %}<div class="showall"><button type="button" class="linkbtn" data-show-groups>Show all {{ rows | length }} groups</button></div>{% endif %}
+  </div>
+{%- endmacro %}
+  {% if not has_base_rate %}<p class="small">No rate is published for this code without a modifier.</p>{% endif %}
+  {% if own_groups %}{{ group_table(own_groups, "Procedure") }}{% endif %}
+  {% if per_network %}<p class="small">Both networks are searched, so a provider with the same price in each counts once per network: {{ units[1] }} can outnumber providers. Pick one network under Search in to count each price once.</p>{% endif %}
+  {% if hospital_groups %}
+  <div class="sech" id="hospital"><h2 class="sec">Hospital Rates For {{ result.billing_code }}</h2>
+    <span class="small">{{ "{:,}".format(hospital_groups | sum(attribute="rate_count")) }} rates in {{ hospital_groups | length }} group{{ "" if hospital_groups | length == 1 else "s" }}</span>
+    <a class="btn sm" href="{{ facility_url }}">Hide</a></div>
+  <p class="small intro">Hospitals bill some {{ result.billing_code }} visits as a facility fee under a hospital department (revenue) code, with {{ result.billing_code }} named alongside. They are kept apart from {{ result.billing_code }}’s own rates and never mixed with them.{% if not hospital_groups | selectattr("modifiers") | list %} None has a modifier.{% endif %}</p>
+  {{ group_table(hospital_groups, "Hospital Department") }}
+  {% elif facility_count and code_type != "RC" and not include_facility %}
+  <div class="sech" id="hospital"><h2 class="sec">Hospital Rates For {{ result.billing_code }}</h2>
+    <span class="small">{{ "{:,}".format(facility_count) }} hidden</span> <a class="btn sm" href="{{ facility_url }}">Show</a></div>
+  {% endif %}
+</section>

@@ -1,0 +1,18 @@
+price-transparency-guide/
+data/*
+# The two Fidelis index files (30 KB each) ship with the repo so Load data lists them on a fresh clone
+!data/raw/
+data/raw/*
+!data/raw/index_files/
+data/raw/index_files/*
+!data/raw/index_files/2026-08-31_fidelis_index.json
+!data/raw/index_files/2026-09-28_fidelis_index.json
+__pycache__/
+.venv/
+*.db
+.DS_Store
+ui/_dev_reload_trigger.py
+
+# Local working notes (requirements, decisions, to-do list); not published
+requirements.md
+HANDOFF.md
